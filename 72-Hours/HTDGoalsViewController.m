@@ -73,6 +73,17 @@
     cell.timeLeft.text = [NSString stringWithFormat:@"%d", (72-hoursBetweenDates)];
     
     
+    if (hoursBetweenDates <= 24) {
+        UIImage *image = [UIImage imageNamed: @"Oval_green"];
+        [cell.ovalImageView setImage:image];
+    } else if (hoursBetweenDates <= 48) {
+        UIImage *image = [UIImage imageNamed: @"Oval"];
+        [cell.ovalImageView setImage:image];
+    } else {
+        UIImage *image = [UIImage imageNamed: @"Oval_red"];
+        [cell.ovalImageView setImage:image];
+    }
+    
     cell.timeLeft.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y - cell.timeLeft.frame.size.height, cell.imageView.frame.size.width, cell.timeLeft.frame.size.height);
     cell.timeLeft.textAlignment = NSTextAlignmentCenter;
     

@@ -20,7 +20,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="87u-Io-kb4" kind="presentation" identifier="addNextAction" id="Fxi-2b-ttK"/>
-                        <segue destination="8qG-aU-BFX" kind="presentation" identifier="showGoalDetail" modalTransitionStyle="flipHorizontal" id="dJJ-PB-dfm"/>
+                        <segue destination="8qG-aU-BFX" kind="presentation" identifier="showGoalDetail" id="dJJ-PB-dfm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnq-gg-rXM" userLabel="First Responder" sceneMemberID="firstResponder"/>

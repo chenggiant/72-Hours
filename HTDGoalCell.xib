@@ -24,7 +24,7 @@
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Oval" translatesAutoresizingMaskIntoConstraints="NO" id="c4L-yl-2cN">
+                    <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Oval" translatesAutoresizingMaskIntoConstraints="NO" id="c4L-yl-2cN">
                         <rect key="frame" x="267" y="15" width="38" height="39"/>
                         <accessibility key="accessibilityConfiguration" hint="Time Left">
                             <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
@@ -54,6 +54,7 @@
                 <outlet property="actionName" destination="NNV-2Q-m1U" id="g1X-gA-uDL"/>
                 <outlet property="goalName" destination="ZPT-k7-I25" id="KHB-3M-8CQ"/>
                 <outlet property="nextActionButton" destination="3A2-7w-VRr" id="ZSL-fr-Iad"/>
+                <outlet property="ovalImageView" destination="c4L-yl-2cN" id="ENK-lf-dHZ"/>
                 <outlet property="timeLeft" destination="s6c-R9-PkL" id="Jp6-uR-OWF"/>
             </connections>
             <point key="canvasLocation" x="-53" y="274"/>

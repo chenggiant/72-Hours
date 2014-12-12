@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *goalName;
 @property (weak, nonatomic) IBOutlet UIImageView *actionCheck;
 @property (weak, nonatomic) IBOutlet UILabel *timeLeft;
+@property (weak, nonatomic) IBOutlet UIImageView *ovalImageView;
 
 @property (weak, nonatomic) IBOutlet UIButton *nextActionButton;
 
