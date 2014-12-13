@@ -31,7 +31,7 @@
                             <bool key="isElement" value="YES"/>
                         </accessibility>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="nHC-hD-WJS">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="nHC-hD-WJS">
                         <rect key="frame" x="9" y="15" width="20" height="20"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6c-R9-PkL">
@@ -42,7 +42,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3A2-7w-VRr">
-                        <rect key="frame" x="9" y="16" width="20" height="17"/>
+                        <rect key="frame" x="0.0" y="8" width="35" height="33"/>
                         <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -57,7 +57,7 @@
                 <outlet property="ovalImageView" destination="c4L-yl-2cN" id="ENK-lf-dHZ"/>
                 <outlet property="timeLeft" destination="s6c-R9-PkL" id="Jp6-uR-OWF"/>
             </connections>
-            <point key="canvasLocation" x="-53" y="274"/>
+            <point key="canvasLocation" x="-53" y="273"/>
         </tableViewCell>
     </objects>
     <resources>
