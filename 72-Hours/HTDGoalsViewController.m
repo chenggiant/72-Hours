@@ -155,9 +155,12 @@
         HTDNewGoalViewController *newGoalViewController = [navigationController viewControllers][0];
         newGoalViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:@"showGoalDetail"]) {
-        UINavigationController *navigationController = segue.destinationViewController;
+        HTDGoalDetailViewController *goalDetailViewController = segue.destinationViewController;
+        
+//        HTDGoalDetailViewController *goalDetailViewController = (HTDGoalDetailViewController *)[navigationController viewControllers][1];;
+//        
+//        NSLog(@"I am Ok 2");
 
-        HTDGoalDetailViewController *goalDetailViewController = (HTDGoalDetailViewController *)navigationController.topViewController;
         HTDAction *action = sender;
         
         goalDetailViewController.goalID = action.goal_id;

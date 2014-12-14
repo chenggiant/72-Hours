@@ -7,6 +7,7 @@
 //
 
 #import "HTDGoalDetailViewController.h"
+#import "HTDGoalsViewController.h"
 #import "HTDActionCell.h"
 #import "HTDDatabase.h"
 
@@ -19,9 +20,6 @@
 
 @implementation HTDGoalDetailViewController
 
-- (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:self.dismissBlock];
-}
 
 - (IBAction)save:(id)sender {
     // Update database with new next action
@@ -31,7 +29,8 @@
     
     [[[HTDDatabase alloc] init] updateNextActionName:newAction];
     
-    [self dismissViewControllerAnimated:YES completion:self.dismissBlock];
+//    [self dismissViewControllerAnimated:YES completion:self.dismissBlock];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -190,6 +189,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    NSLog(@"Goal ID is %d", self.goalID);
     
     self.actionsOfGoal = [[[HTDDatabase alloc] init] selectActionsWithGoalID:self.goalID];
     

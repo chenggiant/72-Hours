@@ -196,7 +196,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.inputField=[[UITextField alloc]initWithFrame:CGRectMake(10, 4, 320, 39)];
+    self.inputField=[[UITextField alloc]initWithFrame:CGRectMake(10, 10, 320, 39)];
     self.inputField.autoresizingMask=UIViewAutoresizingFlexibleHeight;
     self.inputField.autoresizesSubviews=YES;
     self.inputField.layer.cornerRadius=10.0;
@@ -211,6 +211,8 @@
     // register this NIB, which contains the cell
     [self.tableView registerNib:nib forCellReuseIdentifier:@"HTDActionCell"];
     
+    self.actionsOfGoal = [[[HTDDatabase alloc] init] selectActionsWithGoalID:self.goalID];
+
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -226,7 +228,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.actionsOfGoal = [[[HTDDatabase alloc] init] selectActionsWithGoalID:self.goalID];
     
     [self.tableView reloadData];
 }

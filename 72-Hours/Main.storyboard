@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sT7-ln-ium">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -20,7 +21,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="87u-Io-kb4" kind="presentation" identifier="addNextAction" id="Fxi-2b-ttK"/>
-                        <segue destination="8qG-aU-BFX" kind="presentation" identifier="showGoalDetail" id="dJJ-PB-dfm"/>
+                        <segue destination="8qG-aU-BFX" kind="show" identifier="showGoalDetail" id="dJJ-PB-dfm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnq-gg-rXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -197,7 +198,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="18" y="13" width="223" height="21"/>
+                                                <rect key="frame" x="13" y="13" width="223" height="21"/>
                                             </variation>
                                         </label>
                                     </subviews>
@@ -280,11 +281,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="580-aD-J5m">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Rcl-S2-wCx">
-                            <connections>
-                                <action selector="cancel:" destination="D05-D8-dKj" id="ubp-Od-TyB"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="cHV-eO-pxi">
                             <connections>
                                 <action selector="save:" destination="D05-D8-dKj" id="3aX-HX-vdI"/>
@@ -301,6 +297,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8qG-aU-BFX" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="eq3-B3-pnD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OPf-7t-Typ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
