@@ -79,9 +79,12 @@
     } else if (hoursBetweenDates <= 48) {
         UIImage *image = [UIImage imageNamed: @"Oval"];
         [cell.ovalImageView setImage:image];
-    } else {
+    } else if (hoursBetweenDates <= 72){
         UIImage *image = [UIImage imageNamed: @"Oval_red"];
         [cell.ovalImageView setImage:image];
+    } else {
+        // mark action dead and also mark goal dead
+        [[[HTDDatabase alloc] init] markLastActionAndGoalDead:action];
     }
     
     cell.timeLeft.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y - cell.timeLeft.frame.size.height, cell.imageView.frame.size.width, cell.timeLeft.frame.size.height);
@@ -155,17 +158,23 @@
         HTDNewGoalViewController *newGoalViewController = [navigationController viewControllers][0];
         newGoalViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:@"showGoalDetail"]) {
+        // segue: show segue
+        
+        // works for iOS 7
         HTDGoalDetailViewController *goalDetailViewController = segue.destinationViewController;
-        
-//        HTDGoalDetailViewController *goalDetailViewController = (HTDGoalDetailViewController *)[navigationController viewControllers][1];;
-//        
-//        NSLog(@"I am Ok 2");
-
         HTDAction *action = sender;
-        
         goalDetailViewController.goalID = action.goal_id;
+        
+        // works for iOS 8
+//        UINavigationController *navigationController = segue.destinationViewController;
+//        HTDGoalDetailViewController *goalDetailViewController = (HTDGoalDetailViewController *)navigationController.topViewController;
+//        HTDAction *action = sender;
+//        
+//        goalDetailViewController.goalID = action.goal_id;
+        
 
     } else if ([segue.identifier isEqualToString:@"addNextAction"]) {
+        // segue: modally segue
         UINavigationController *navigationController = segue.destinationViewController;
         
         HTDNextActionViewController *nextActionViewController = (HTDNextActionViewController *)navigationController.topViewController;

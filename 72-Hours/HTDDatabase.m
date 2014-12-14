@@ -179,5 +179,31 @@ For Date, may need to convert to human-readable format. Currently date is stored
 }
 
 
+- (void)markLastActionAndGoalDead:(HTDAction *)action {
+    //Get the document directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"/72Hours.sqlite"];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    FMDatabase *db = [FMDatabase databaseWithPath:databasePath];
+    
+    [db open];
+    
+    // mark action dead
+    [db executeUpdate:@"UPDATE action SET status = 2 WHERE action_ID = ?", [NSNumber numberWithInt:action.action_id]];
+
+    // mark goal dead
+    [db executeUpdate:@"UPDATE goal SET status = 2 WHERE goal_ID = ?", [NSNumber numberWithInt:action.goal_id]];
+
+    [db close];
+
+    
+}
+
+
+
 
 @end

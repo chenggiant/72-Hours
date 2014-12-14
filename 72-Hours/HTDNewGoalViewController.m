@@ -10,7 +10,7 @@
 #import "HTDGoal.h"
 #import "HTDAction.h"
 
-@interface HTDNewGoalViewController ()
+@interface HTDNewGoalViewController () <UITextFieldDelegate>
 
 @end
 
@@ -75,5 +75,35 @@
         [self.actionTextField becomeFirstResponder];
     }
 }
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.goalTextField.delegate = self;
+    self.actionTextField.delegate = self;
+
+    // add the observer
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldDidChange:)
+                                                 name:@"UITextFieldTextDidChangeNotification"
+                                               object:nil];
+}
+
+// the method to call on a change
+- (void)textFieldDidChange:(NSNotification*)aNotification
+{
+    self.navigationItem.rightBarButtonItem.enabled = [self bothTextFieldsHaveContent];
+}
+
+- (BOOL)bothTextFieldsHaveContent {
+    return ![self isStringEmptyWithString:self.goalTextField.text] && ![self isStringEmptyWithString:self.actionTextField.text];
+}
+               
+               // a category would be more elegant
+- (BOOL)isStringEmptyWithString:(NSString *)aString {
+    NSString * temp = [aString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        return [temp isEqual:@""];
+}
+
 
 @end

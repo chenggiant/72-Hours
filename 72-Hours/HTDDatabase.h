@@ -22,4 +22,6 @@
 
 - (void)markGoalAchieved:(int)goalID;
 - (void)insertNewNextAction:(HTDAction *)action;
+- (void)markLastActionAndGoalDead:(HTDAction *)action;
+
 @end

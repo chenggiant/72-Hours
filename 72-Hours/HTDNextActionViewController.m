@@ -187,12 +187,6 @@
 }
 
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -219,7 +213,32 @@
                                    action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    
+    // add the observer
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(textFieldDidChange:)
+                                                 name:@"UITextFieldTextDidChangeNotification"
+                                               object:nil];
+
 }
+
+
+// the method to call on a change
+- (void)textFieldDidChange:(NSNotification*)aNotification
+{
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    return YES;
+}
+
 
 - (void)dismissKeyboard {
     [self.inputField resignFirstResponder];

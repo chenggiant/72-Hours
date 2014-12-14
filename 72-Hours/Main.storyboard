@@ -139,7 +139,7 @@
                                 <action selector="cancel:" destination="vZg-Ks-gLJ" id="pgY-4K-v7U"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="AII-Gh-bwW">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="AII-Gh-bwW">
                             <connections>
                                 <action selector="save:" destination="vZg-Ks-gLJ" id="wPd-Ca-IEn"/>
                             </connections>
@@ -229,7 +229,7 @@
                                 <action selector="cancel:" destination="04g-9e-dzC" id="fAM-o3-dHU"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="7hb-Q6-qU1">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="7hb-Q6-qU1">
                             <connections>
                                 <action selector="save:" destination="04g-9e-dzC" id="hyp-Ox-3sP"/>
                             </connections>
