@@ -172,7 +172,7 @@
             </objects>
             <point key="canvasLocation" x="907.5" y="95"/>
         </scene>
-        <!--Next Action View Controller-->
+        <!--Next Action-->
         <scene sceneID="nsr-lU-oVk">
             <objects>
                 <tableViewController id="04g-9e-dzC" customClass="HTDNextActionViewController" sceneMemberID="viewController">
@@ -223,7 +223,7 @@
                     <toolbarItems>
                         <barButtonItem title="Item" id="y5A-Wz-q2X"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="cdJ-Ls-7Mr">
+                    <navigationItem key="navigationItem" title="Next Action" id="cdJ-Ls-7Mr">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="FMR-9y-vPR">
                             <connections>
                                 <action selector="cancel:" destination="04g-9e-dzC" id="fAM-o3-dHU"/>
@@ -259,7 +259,7 @@
             </objects>
             <point key="canvasLocation" x="2425.5" y="93"/>
         </scene>
-        <!--Goal Detail View Controller-->
+        <!--Actions-->
         <scene sceneID="Aot-On-Em4">
             <objects>
                 <tableViewController id="D05-D8-dKj" customClass="HTDGoalDetailViewController" sceneMemberID="viewController">
@@ -280,7 +280,7 @@
                             <outlet property="delegate" destination="D05-D8-dKj" id="Qlk-2i-G8O"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="580-aD-J5m">
+                    <navigationItem key="navigationItem" title="Actions" id="580-aD-J5m">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="cHV-eO-pxi">
                             <connections>
                                 <action selector="save:" destination="D05-D8-dKj" id="3aX-HX-vdI"/>
