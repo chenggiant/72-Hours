@@ -12,5 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *actionNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeSpentLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *timeImage;
 
 @end

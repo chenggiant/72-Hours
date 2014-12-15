@@ -69,6 +69,19 @@
         NSTimeInterval distanceBetweenDates = [today timeIntervalSinceDate:action.date_start];
         double secondsInAnHour = 3600;
         int hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+        
+        
+        if (hoursBetweenDates <= 24) {
+            UIImage *image = [UIImage imageNamed: @"Oval_green"];
+            [cell.timeImage setImage:image];
+        } else if (hoursBetweenDates <= 48) {
+            UIImage *image = [UIImage imageNamed: @"Oval"];
+            [cell.timeImage setImage:image];
+        } else if (hoursBetweenDates <= 72){
+            UIImage *image = [UIImage imageNamed: @"Oval_red"];
+            [cell.timeImage setImage:image];
+        }
+        
         cell.timeSpentLabel.text = [NSString stringWithFormat:@"%d", (72-hoursBetweenDates)];
         
     } else {
