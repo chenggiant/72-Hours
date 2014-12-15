@@ -19,7 +19,6 @@
 		4208F66D1A2DE3F3004F39B4 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F6661A2DE3F3004F39B4 /* FMDatabaseQueue.m */; };
 		4208F66E1A2DE3F3004F39B4 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F6691A2DE3F3004F39B4 /* FMResultSet.m */; };
 		4208F6711A2DE49D004F39B4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4208F66F1A2DE42C004F39B4 /* libsqlite3.dylib */; };
-		4208F6731A2DE7FB004F39B4 /* 72hour in Resources */ = {isa = PBXBuildFile; fileRef = 4208F6721A2DE7FB004F39B4 /* 72hour */; };
 		4208F68E1A2DF64C004F39B4 /* HTDGoalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F68C1A2DF64C004F39B4 /* HTDGoalCell.m */; };
 		4208F68F1A2DF64C004F39B4 /* HTDGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4208F68D1A2DF64C004F39B4 /* HTDGoalCell.xib */; };
 		426F83D41A3959F60047F1B4 /* RowForInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426F83D31A3959F60047F1B4 /* RowForInputCell.m */; };
@@ -71,7 +70,6 @@
 		4208F6681A2DE3F3004F39B4 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		4208F6691A2DE3F3004F39B4 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		4208F66F1A2DE42C004F39B4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		4208F6721A2DE7FB004F39B4 /* 72hour */ = {isa = PBXFileReference; lastKnownFileType = file; path = 72hour; sourceTree = "<group>"; };
 		4208F68B1A2DF64C004F39B4 /* HTDGoalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTDGoalCell.h; path = ../HTDGoalCell.h; sourceTree = "<group>"; };
 		4208F68C1A2DF64C004F39B4 /* HTDGoalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTDGoalCell.m; path = ../HTDGoalCell.m; sourceTree = "<group>"; };
 		4208F68D1A2DF64C004F39B4 /* HTDGoalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HTDGoalCell.xib; path = ../HTDGoalCell.xib; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				42CAD7231A3ACD0800D400A3 /* 72Hours.sqlite */,
-				4208F6721A2DE7FB004F39B4 /* 72hour */,
 				4208F6391A2DE3DA004F39B4 /* Info.plist */,
 				4208F63A1A2DE3DA004F39B4 /* main.m */,
 			);
@@ -301,7 +298,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				42BF561C1A3727630007859A /* HTDActionCell.xib in Resources */,
-				4208F6731A2DE7FB004F39B4 /* 72hour in Resources */,
 				42CAD7241A3ACD0800D400A3 /* 72Hours.sqlite in Resources */,
 				42BF56141A3719620007859A /* Main.storyboard in Resources */,
 				4208F6491A2DE3DA004F39B4 /* LaunchScreen.xib in Resources */,

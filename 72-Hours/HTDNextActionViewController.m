@@ -86,6 +86,7 @@
     UISwitch* switchControl = sender;
     if (switchControl.on) {
         self.goalState = YES;
+        self.navigationItem.rightBarButtonItem.enabled = YES;
     } else {
         self.goalState = NO;
     }
