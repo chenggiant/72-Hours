@@ -10,18 +10,33 @@
 #import "HTDGoal.h"
 #import "HTDAction.h"
 
+@interface HTDDatabase()
+
+@property NSString *databasePath;
+
+@end
+
+
 @implementation HTDDatabase
+
+- (instancetype)init {
+    
+    self = [super init];
+    
+    if (self) {
+        //Get the document directory
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        self.databasePath = [documentsDirectory stringByAppendingPathComponent:@"/72Hours.sqlite"];
+    }
+    return self;
+}
 
 - (NSArray *)selectActionsWithStatus:(int)state {
 
     NSMutableArray *selectedActions = [[NSMutableArray alloc] init];
     
-    //Get the document directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"/72Hours.sqlite"];
-    
-    FMDatabase *db = [FMDatabase databaseWithPath:databasePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
     
     [db open];
     
@@ -46,12 +61,7 @@
 - (NSArray *)selectActionsWithGoalID:(int)goalID {
     NSMutableArray *selectedActions = [[NSMutableArray alloc] init];
     
-    //Get the document directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"/72Hours.sqlite"];
-    
-    FMDatabase *db = [FMDatabase databaseWithPath:databasePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
     
     [db open];
     
@@ -81,15 +91,11 @@ For Date, may need to convert to human-readable format. Currently date is stored
 */
 
 -(void)insertNewAction:(HTDAction *)action {
-    //Get the document directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"/72Hours.sqlite"];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
-    FMDatabase *db = [FMDatabase databaseWithPath:databasePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
     
     [db open];
     [db executeUpdate:@"INSERT INTO goal (name,status,dead_count) VALUES (?,?,?)", action.goal_name, [NSNumber numberWithInt:1], [NSNumber numberWithInt:0], nil];
@@ -109,12 +115,8 @@ For Date, may need to convert to human-readable format. Currently date is stored
 
 
 - (void)updateNextActionName:(HTDAction *)newNextAction {
-    //Get the document directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"/72Hours.sqlite"];
         
-    FMDatabase *db = [FMDatabase databaseWithPath:databasePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
     
     [db open];
     [db executeUpdate:@"UPDATE action SET name = ? WHERE action_ID = ?", newNextAction.action_name, [NSNumber numberWithInt:newNextAction.action_id]];
@@ -123,12 +125,8 @@ For Date, may need to convert to human-readable format. Currently date is stored
 }
 
 - (void)flipActionStatus:(HTDAction *)action {
-    //Get the document directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"/72Hours.sqlite"];
     
-    FMDatabase *db = [FMDatabase databaseWithPath:databasePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
     
     [db open];
     
@@ -146,12 +144,7 @@ For Date, may need to convert to human-readable format. Currently date is stored
 }
 
 - (void)markGoalAchieved:(int)goalID {
-    //Get the document directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"/72Hours.sqlite"];
-    
-    FMDatabase *db = [FMDatabase databaseWithPath:databasePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
     
     [db open];
     [db executeUpdate:@"UPDATE goal SET status = 0 WHERE goal_ID = ?", [NSNumber numberWithInt:goalID]];
@@ -161,15 +154,11 @@ For Date, may need to convert to human-readable format. Currently date is stored
 
 
 - (void)insertNewNextAction:(HTDAction *)action {
-    //Get the document directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"/72Hours.sqlite"];
-    
+
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
-    FMDatabase *db = [FMDatabase databaseWithPath:databasePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
     
     [db open];
     
@@ -180,15 +169,11 @@ For Date, may need to convert to human-readable format. Currently date is stored
 
 
 - (void)markLastActionAndGoalDead:(HTDAction *)action {
-    //Get the document directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *databasePath = [documentsDirectory stringByAppendingPathComponent:@"/72Hours.sqlite"];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
-    FMDatabase *db = [FMDatabase databaseWithPath:databasePath];
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
     
     [db open];
     

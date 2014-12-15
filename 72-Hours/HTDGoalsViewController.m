@@ -139,7 +139,7 @@
 
 - (void)HTDNewGoalViewController:(HTDNewGoalViewController *)controller didAddGoal:(HTDAction *)action {
     // Insert action to database
-    [[HTDDatabase alloc] insertNewAction:action];
+    [[[HTDDatabase alloc] init] insertNewAction:action];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

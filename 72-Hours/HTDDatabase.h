@@ -12,14 +12,18 @@
 
 @interface HTDDatabase : NSObject
 
+
+
+// Selection Queries
 - (NSArray *)selectActionsWithStatus:(int)state;
 - (NSArray *)selectActionsWithGoalID:(int)goalID;
 
 
+
+// Updating Queries
 - (void)insertNewAction:(HTDAction *)action;
 - (void)updateNextActionName:(HTDAction *)newNextAction;
 - (void)flipActionStatus:(HTDAction *)action;
-
 - (void)markGoalAchieved:(int)goalID;
 - (void)insertNewNextAction:(HTDAction *)action;
 - (void)markLastActionAndGoalDead:(HTDAction *)action;
