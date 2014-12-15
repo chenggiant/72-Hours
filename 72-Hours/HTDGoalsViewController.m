@@ -87,7 +87,7 @@
         [[[HTDDatabase alloc] init] markLastActionAndGoalDead:action];
     }
     
-    cell.timeLeft.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y - cell.timeLeft.frame.size.height, cell.imageView.frame.size.width, cell.timeLeft.frame.size.height);
+//    cell.timeLeft.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y - cell.timeLeft.frame.size.height, cell.imageView.frame.size.width, cell.timeLeft.frame.size.height);
     cell.timeLeft.textAlignment = NSTextAlignmentCenter;
     
     

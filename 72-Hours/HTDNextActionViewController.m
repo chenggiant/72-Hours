@@ -131,7 +131,7 @@
             cellAction.timeSpentLabel.text = [NSString stringWithFormat:@"%d", hoursBetweenDates];
             
             
-            cellAction.timeSpentLabel.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y - cellAction.timeSpentLabel.frame.size.height, cell.imageView.frame.size.width, cellAction.timeSpentLabel.frame.size.height);
+//            cellAction.timeSpentLabel.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y - cellAction.timeSpentLabel.frame.size.height, cell.imageView.frame.size.width, cellAction.timeSpentLabel.frame.size.height);
             cellAction.timeSpentLabel.textAlignment = NSTextAlignmentCenter;
             
             cell = cellAction;
@@ -191,7 +191,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.inputField=[[UITextField alloc]initWithFrame:CGRectMake(10, 10, 320, 39)];
+    self.inputField=[[UITextField alloc]initWithFrame:CGRectMake(10, 5, 320, 39)];
     self.inputField.autoresizingMask=UIViewAutoresizingFlexibleHeight;
     self.inputField.autoresizesSubviews=YES;
     self.inputField.layer.cornerRadius=10.0;
