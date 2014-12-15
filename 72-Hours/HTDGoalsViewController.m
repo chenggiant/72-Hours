@@ -14,6 +14,15 @@
 #import "HTDGoal.h"
 #import "HTDDatabase.h"
 
+
+
+// System Versioning Preprocessor Macros
+#define SYSTEM_VERSION_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
 @interface HTDGoalsViewController ()
 
 @property (strong, nonatomic) NSArray *activeActions;
@@ -160,18 +169,19 @@
     } else if ([segue.identifier isEqualToString:@"showGoalDetail"]) {
         // segue: show segue
         
-        // works for iOS 7
-        HTDGoalDetailViewController *goalDetailViewController = segue.destinationViewController;
-        HTDAction *action = sender;
-        goalDetailViewController.goalID = action.goal_id;
+        if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+            // works for iOS 7
+            HTDGoalDetailViewController *goalDetailViewController = segue.destinationViewController;
+            HTDAction *action = sender;
+            goalDetailViewController.goalID = action.goal_id;
+        } else {
         
         // works for iOS 8
-//        UINavigationController *navigationController = segue.destinationViewController;
-//        HTDGoalDetailViewController *goalDetailViewController = (HTDGoalDetailViewController *)navigationController.topViewController;
-//        HTDAction *action = sender;
-//        goalDetailViewController.goalID = action.goal_id;
-        
-
+            UINavigationController *navigationController = segue.destinationViewController;
+            HTDGoalDetailViewController *goalDetailViewController = (HTDGoalDetailViewController *)navigationController.topViewController;
+            HTDAction *action = sender;
+            goalDetailViewController.goalID = action.goal_id;
+        }
     } else if ([segue.identifier isEqualToString:@"addNextAction"]) {
         // segue: modally segue
         UINavigationController *navigationController = segue.destinationViewController;
