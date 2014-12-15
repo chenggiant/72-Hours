@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,22 +15,37 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Action name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec7-sL-TlM">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec7-sL-TlM">
                         <rect key="frame" x="11" y="11" width="236" height="21"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Oval_green" translatesAutoresizingMaskIntoConstraints="NO" id="PE1-En-RYL">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Oval_green" translatesAutoresizingMaskIntoConstraints="NO" id="PE1-En-RYL">
                         <rect key="frame" x="274" y="8" width="28" height="28"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fo-fK-50w">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fo-fK-50w">
                         <rect key="frame" x="277" y="12" width="22" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="2HY-6y-AKx"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="4fo-fK-50w" firstAttribute="leading" secondItem="ec7-sL-TlM" secondAttribute="trailing" constant="30" id="7xG-Hz-6Jz"/>
+                    <constraint firstItem="ec7-sL-TlM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9Ah-Ug-laz"/>
+                    <constraint firstItem="PE1-En-RYL" firstAttribute="leading" secondItem="ec7-sL-TlM" secondAttribute="trailing" constant="27" id="TId-IO-vxK"/>
+                    <constraint firstItem="4fo-fK-50w" firstAttribute="centerY" secondItem="PE1-En-RYL" secondAttribute="centerY" id="Tft-68-jq8"/>
+                    <constraint firstItem="4fo-fK-50w" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="cEK-QK-FPt"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="PE1-En-RYL" secondAttribute="bottom" constant="-1" id="f1o-or-rId"/>
+                    <constraint firstItem="PE1-En-RYL" firstAttribute="centerX" secondItem="4fo-fK-50w" secondAttribute="centerX" id="gUQ-0P-tma"/>
+                    <constraint firstItem="ec7-sL-TlM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="3" id="uNS-oF-NlH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="PE1-En-RYL" secondAttribute="trailing" constant="10" id="wNe-LO-aGk"/>
+                    <constraint firstItem="PE1-En-RYL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="wbh-23-m8f"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="actionNameLabel" destination="ec7-sL-TlM" id="MwB-Rs-9vj"/>

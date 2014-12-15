@@ -169,7 +169,6 @@
 //        UINavigationController *navigationController = segue.destinationViewController;
 //        HTDGoalDetailViewController *goalDetailViewController = (HTDGoalDetailViewController *)navigationController.topViewController;
 //        HTDAction *action = sender;
-//        
 //        goalDetailViewController.goalID = action.goal_id;
         
 
