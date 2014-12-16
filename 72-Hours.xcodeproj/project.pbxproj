@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12FDDE351A404D6E00657CBF /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FDDE341A404D6E00657CBF /* SWRevealViewController.m */; };
+		12FDDE381A4057E800657CBF /* HTDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FDDE371A4057E800657CBF /* HTDMenuViewController.m */; };
 		4208F63B1A2DE3DA004F39B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F63A1A2DE3DA004F39B4 /* main.m */; };
 		4208F63E1A2DE3DA004F39B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F63D1A2DE3DA004F39B4 /* AppDelegate.m */; };
 		4208F6411A2DE3DA004F39B4 /* HTDGoalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F6401A2DE3DA004F39B4 /* HTDGoalsViewController.m */; };
@@ -46,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12FDDE331A404D6E00657CBF /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		12FDDE341A404D6E00657CBF /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		12FDDE361A4057E800657CBF /* HTDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTDMenuViewController.h; sourceTree = "<group>"; };
+		12FDDE371A4057E800657CBF /* HTDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTDMenuViewController.m; sourceTree = "<group>"; };
 		4208F6351A2DE3DA004F39B4 /* 72-Hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "72-Hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4208F6391A2DE3DA004F39B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4208F63A1A2DE3DA004F39B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,10 +121,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12FDDE321A404D6E00657CBF /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				12FDDE331A404D6E00657CBF /* SWRevealViewController.h */,
+				12FDDE341A404D6E00657CBF /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		4208F62C1A2DE3DA004F39B4 = {
 			isa = PBXGroup;
 			children = (
 				4208F66F1A2DE42C004F39B4 /* libsqlite3.dylib */,
+				12FDDE321A404D6E00657CBF /* SWRevealViewController */,
 				4208F65E1A2DE3F3004F39B4 /* fmdb */,
 				4208F6371A2DE3DA004F39B4 /* 72-Hours */,
 				4208F6511A2DE3DA004F39B4 /* 72-HoursTests */,
@@ -156,6 +172,8 @@
 				4208F63D1A2DE3DA004F39B4 /* AppDelegate.m */,
 				4208F63F1A2DE3DA004F39B4 /* HTDGoalsViewController.h */,
 				4208F6401A2DE3DA004F39B4 /* HTDGoalsViewController.m */,
+				12FDDE361A4057E800657CBF /* HTDMenuViewController.h */,
+				12FDDE371A4057E800657CBF /* HTDMenuViewController.m */,
 				42BF56151A371E7D0007859A /* HTDNewGoalViewController.h */,
 				42BF56161A371E7D0007859A /* HTDNewGoalViewController.m */,
 				429B5C571A3841910028D2A2 /* HTDGoalDetailViewController.h */,
@@ -321,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4208F68E1A2DF64C004F39B4 /* HTDGoalCell.m in Sources */,
+				12FDDE351A404D6E00657CBF /* SWRevealViewController.m in Sources */,
 				429B5C591A3841910028D2A2 /* HTDGoalDetailViewController.m in Sources */,
 				4208F6411A2DE3DA004F39B4 /* HTDGoalsViewController.m in Sources */,
 				4208F66C1A2DE3F3004F39B4 /* FMDatabasePool.m in Sources */,
@@ -333,6 +352,7 @@
 				4208F63B1A2DE3DA004F39B4 /* main.m in Sources */,
 				4208F66A1A2DE3F3004F39B4 /* FMDatabase.m in Sources */,
 				42BF561B1A3727630007859A /* HTDActionCell.m in Sources */,
+				12FDDE381A4057E800657CBF /* HTDMenuViewController.m in Sources */,
 				4208F66E1A2DE3F3004F39B4 /* FMResultSet.m in Sources */,
 				426F83DA1A3972B90047F1B4 /* HTDDatabase.m in Sources */,
 				426F83DD1A39864F0047F1B4 /* HTDGoal.m in Sources */,

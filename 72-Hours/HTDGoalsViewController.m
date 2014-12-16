@@ -13,6 +13,7 @@
 #import "HTDAction.h"
 #import "HTDGoal.h"
 #import "HTDDatabase.h"
+#import "SWRevealViewController.h"
 
 
 
@@ -27,10 +28,12 @@
 
 @property (strong, nonatomic) NSArray *activeActions;
 @property int goalID;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
 
 @end
 
 @implementation HTDGoalsViewController
+
 
 
 - (instancetype)init {
@@ -134,7 +137,22 @@
     
     // reload tableview every 10 min to update the timeleft
     [NSTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
-    
+
+    [self customSetup];
+}
+
+- (void)customSetup
+{
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        NSLog(@"The revealViewController is OK");
+        
+        [self.revealButtonItem setTarget: self.revealViewController];
+        [self.revealButtonItem setAction: @selector( revealToggle: )];
+        
+//        [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

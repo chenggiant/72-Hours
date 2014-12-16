@@ -87,7 +87,7 @@
                 <outlet property="ovalImageView" destination="c4L-yl-2cN" id="ENK-lf-dHZ"/>
                 <outlet property="timeLeft" destination="s6c-R9-PkL" id="Jp6-uR-OWF"/>
             </connections>
-            <point key="canvasLocation" x="-155" y="272"/>
+            <point key="canvasLocation" x="-89" y="266"/>
         </tableViewCell>
     </objects>
     <resources>

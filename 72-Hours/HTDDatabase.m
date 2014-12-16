@@ -90,7 +90,7 @@ For Date, may need to convert to human-readable format. Currently date is stored
  
 */
 
--(void)insertNewAction:(HTDAction *)action {
+- (void)insertNewAction:(HTDAction *)action {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
