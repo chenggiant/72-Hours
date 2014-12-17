@@ -138,22 +138,8 @@
     // reload tableview every 10 min to update the timeleft
     [NSTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
 
-    [self customSetup];
 }
 
-- (void)customSetup
-{
-    SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
-    {
-        NSLog(@"The revealViewController is OK");
-        
-        [self.revealButtonItem setTarget: self.revealViewController];
-        [self.revealButtonItem setAction: @selector( revealToggle: )];
-        
-//        [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
-    }
-}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12A4B5CA1A41A45F002BF9B7 /* HTDDeadGoalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A4B5C91A41A45F002BF9B7 /* HTDDeadGoalsViewController.m */; };
+		12A4B5CD1A41A481002BF9B7 /* HTDDoneGoalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A4B5CC1A41A481002BF9B7 /* HTDDoneGoalsViewController.m */; };
+		12A4B5D01A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A4B5CF1A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.m */; };
+		12A4B5D31A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A4B5D21A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.m */; };
 		12FDDE351A404D6E00657CBF /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FDDE341A404D6E00657CBF /* SWRevealViewController.m */; };
-		12FDDE381A4057E800657CBF /* HTDMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FDDE371A4057E800657CBF /* HTDMenuViewController.m */; };
 		4208F63B1A2DE3DA004F39B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F63A1A2DE3DA004F39B4 /* main.m */; };
 		4208F63E1A2DE3DA004F39B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F63D1A2DE3DA004F39B4 /* AppDelegate.m */; };
 		4208F6411A2DE3DA004F39B4 /* HTDGoalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F6401A2DE3DA004F39B4 /* HTDGoalsViewController.m */; };
@@ -48,10 +51,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12A4B5C81A41A45F002BF9B7 /* HTDDeadGoalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTDDeadGoalsViewController.h; sourceTree = "<group>"; };
+		12A4B5C91A41A45F002BF9B7 /* HTDDeadGoalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTDDeadGoalsViewController.m; sourceTree = "<group>"; };
+		12A4B5CB1A41A481002BF9B7 /* HTDDoneGoalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTDDoneGoalsViewController.h; sourceTree = "<group>"; };
+		12A4B5CC1A41A481002BF9B7 /* HTDDoneGoalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTDDoneGoalsViewController.m; sourceTree = "<group>"; };
+		12A4B5CE1A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTDDeadGoalDetailViewController.h; sourceTree = "<group>"; };
+		12A4B5CF1A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTDDeadGoalDetailViewController.m; sourceTree = "<group>"; };
+		12A4B5D11A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTDDoneGoalDetailViewController.h; sourceTree = "<group>"; };
+		12A4B5D21A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTDDoneGoalDetailViewController.m; sourceTree = "<group>"; };
 		12FDDE331A404D6E00657CBF /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		12FDDE341A404D6E00657CBF /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		12FDDE361A4057E800657CBF /* HTDMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTDMenuViewController.h; sourceTree = "<group>"; };
-		12FDDE371A4057E800657CBF /* HTDMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTDMenuViewController.m; sourceTree = "<group>"; };
 		4208F6351A2DE3DA004F39B4 /* 72-Hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "72-Hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4208F6391A2DE3DA004F39B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4208F63A1A2DE3DA004F39B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -172,12 +181,18 @@
 				4208F63D1A2DE3DA004F39B4 /* AppDelegate.m */,
 				4208F63F1A2DE3DA004F39B4 /* HTDGoalsViewController.h */,
 				4208F6401A2DE3DA004F39B4 /* HTDGoalsViewController.m */,
-				12FDDE361A4057E800657CBF /* HTDMenuViewController.h */,
-				12FDDE371A4057E800657CBF /* HTDMenuViewController.m */,
 				42BF56151A371E7D0007859A /* HTDNewGoalViewController.h */,
 				42BF56161A371E7D0007859A /* HTDNewGoalViewController.m */,
+				12A4B5CE1A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.h */,
+				12A4B5CF1A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.m */,
+				12A4B5D11A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.h */,
+				12A4B5D21A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.m */,
 				429B5C571A3841910028D2A2 /* HTDGoalDetailViewController.h */,
 				429B5C581A3841910028D2A2 /* HTDGoalDetailViewController.m */,
+				12A4B5C81A41A45F002BF9B7 /* HTDDeadGoalsViewController.h */,
+				12A4B5C91A41A45F002BF9B7 /* HTDDeadGoalsViewController.m */,
+				12A4B5CB1A41A481002BF9B7 /* HTDDoneGoalsViewController.h */,
+				12A4B5CC1A41A481002BF9B7 /* HTDDoneGoalsViewController.m */,
 				429B5C5A1A3842000028D2A2 /* HTDNextActionViewController.h */,
 				429B5C5B1A3842000028D2A2 /* HTDNextActionViewController.m */,
 				4208F68D1A2DF64C004F39B4 /* HTDGoalCell.xib */,
@@ -338,10 +353,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12A4B5CA1A41A45F002BF9B7 /* HTDDeadGoalsViewController.m in Sources */,
 				4208F68E1A2DF64C004F39B4 /* HTDGoalCell.m in Sources */,
 				12FDDE351A404D6E00657CBF /* SWRevealViewController.m in Sources */,
 				429B5C591A3841910028D2A2 /* HTDGoalDetailViewController.m in Sources */,
 				4208F6411A2DE3DA004F39B4 /* HTDGoalsViewController.m in Sources */,
+				12A4B5CD1A41A481002BF9B7 /* HTDDoneGoalsViewController.m in Sources */,
 				4208F66C1A2DE3F3004F39B4 /* FMDatabasePool.m in Sources */,
 				42BF56171A371E7D0007859A /* HTDNewGoalViewController.m in Sources */,
 				4208F63E1A2DE3DA004F39B4 /* AppDelegate.m in Sources */,
@@ -352,12 +369,13 @@
 				4208F63B1A2DE3DA004F39B4 /* main.m in Sources */,
 				4208F66A1A2DE3F3004F39B4 /* FMDatabase.m in Sources */,
 				42BF561B1A3727630007859A /* HTDActionCell.m in Sources */,
-				12FDDE381A4057E800657CBF /* HTDMenuViewController.m in Sources */,
 				4208F66E1A2DE3F3004F39B4 /* FMResultSet.m in Sources */,
 				426F83DA1A3972B90047F1B4 /* HTDDatabase.m in Sources */,
 				426F83DD1A39864F0047F1B4 /* HTDGoal.m in Sources */,
 				429B5C5C1A3842000028D2A2 /* HTDNextActionViewController.m in Sources */,
 				4208F66B1A2DE3F3004F39B4 /* FMDatabaseAdditions.m in Sources */,
+				12A4B5D31A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.m in Sources */,
+				12A4B5D01A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

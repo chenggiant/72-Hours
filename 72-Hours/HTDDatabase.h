@@ -14,10 +14,18 @@
 
 
 
+// for status
+// 0 means goal finished;
+// 1 means goal active;
+// 2 means goal dead;
+
+
+
 // Selection Queries
 - (NSArray *)selectActionsWithStatus:(int)state;
 - (NSArray *)selectActionsWithGoalID:(int)goalID;
-
+- (int)selectGoalDeadCount:(int)goalID;
+- (NSArray *)selectGoalsWithStatus:(int)state;
 
 
 // Updating Queries

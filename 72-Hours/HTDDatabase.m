@@ -32,6 +32,50 @@
     return self;
 }
 
+
+- (int)selectGoalDeadCount:(int)goalID {
+    
+    int count = 0;
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
+    
+    [db open];
+    
+    FMResultSet *result = [db executeQuery:@"SELECT dead_count FROM goal WHERE goal.goal_ID = ?", [NSNumber numberWithInt:goalID]];
+    while([result next])
+    {
+        count = [result intForColumn:@"dead_count"];
+    }
+    [db close];
+    return count;
+
+}
+
+
+
+- (NSArray *)selectGoalsWithStatus:(int)state {
+    NSMutableArray *selectedGoals = [[NSMutableArray alloc] init];
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
+    
+    [db open];
+    
+    FMResultSet *result = [db executeQuery:@"SELECT * FROM goal WHERE status = ?", [NSNumber numberWithInt:state]];
+    while([result next])
+    {
+        HTDGoal *goal = [[HTDGoal alloc] init];
+        goal.duration = [result doubleForColumn:@"duration"];
+        goal.goal_name = [result stringForColumn:@"name"];
+        goal.goal_id = [result intForColumn:@"goal_ID"];
+        goal.dead_count = [result intForColumn:@"dead_count"];
+        goal.status = [result intForColumn:@"status"];
+        [selectedGoals addObject:goal];
+    }
+    [db close];
+    
+    return [selectedGoals copy];
+
+}
+
+
 - (NSArray *)selectActionsWithStatus:(int)state {
 
     NSMutableArray *selectedActions = [[NSMutableArray alloc] init];
@@ -182,6 +226,9 @@ For Date, may need to convert to human-readable format. Currently date is stored
 
     // mark goal dead
     [db executeUpdate:@"UPDATE goal SET status = 2 WHERE goal_ID = ?", [NSNumber numberWithInt:action.goal_id]];
+    
+    // add dead_count
+    [db executeUpdate:@"UPDATE goal SET dead_count = dead_count + 1 WHERE goal_ID = ?", [NSNumber numberWithInt:action.goal_id]];
 
     [db close];
 
