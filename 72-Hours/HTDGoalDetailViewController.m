@@ -219,9 +219,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    NSLog(@"Goal ID is %d", self.goalID);
-    
+        
     self.actionsOfGoal = [[[HTDDatabase alloc] init] selectActionsWithGoalID:self.goalID];
     
     [self.tableView reloadData];

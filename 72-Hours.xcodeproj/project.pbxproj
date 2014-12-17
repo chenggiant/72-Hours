@@ -11,7 +11,6 @@
 		12A4B5CD1A41A481002BF9B7 /* HTDDoneGoalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A4B5CC1A41A481002BF9B7 /* HTDDoneGoalsViewController.m */; };
 		12A4B5D01A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A4B5CF1A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.m */; };
 		12A4B5D31A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A4B5D21A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.m */; };
-		12FDDE351A404D6E00657CBF /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FDDE341A404D6E00657CBF /* SWRevealViewController.m */; };
 		4208F63B1A2DE3DA004F39B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F63A1A2DE3DA004F39B4 /* main.m */; };
 		4208F63E1A2DE3DA004F39B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F63D1A2DE3DA004F39B4 /* AppDelegate.m */; };
 		4208F6411A2DE3DA004F39B4 /* HTDGoalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F6401A2DE3DA004F39B4 /* HTDGoalsViewController.m */; };
@@ -59,8 +58,6 @@
 		12A4B5CF1A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTDDeadGoalDetailViewController.m; sourceTree = "<group>"; };
 		12A4B5D11A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTDDoneGoalDetailViewController.h; sourceTree = "<group>"; };
 		12A4B5D21A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTDDoneGoalDetailViewController.m; sourceTree = "<group>"; };
-		12FDDE331A404D6E00657CBF /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		12FDDE341A404D6E00657CBF /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		4208F6351A2DE3DA004F39B4 /* 72-Hours.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "72-Hours.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4208F6391A2DE3DA004F39B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4208F63A1A2DE3DA004F39B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -130,20 +127,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		12FDDE321A404D6E00657CBF /* SWRevealViewController */ = {
-			isa = PBXGroup;
-			children = (
-				12FDDE331A404D6E00657CBF /* SWRevealViewController.h */,
-				12FDDE341A404D6E00657CBF /* SWRevealViewController.m */,
-			);
-			path = SWRevealViewController;
-			sourceTree = "<group>";
-		};
 		4208F62C1A2DE3DA004F39B4 = {
 			isa = PBXGroup;
 			children = (
 				4208F66F1A2DE42C004F39B4 /* libsqlite3.dylib */,
-				12FDDE321A404D6E00657CBF /* SWRevealViewController */,
 				4208F65E1A2DE3F3004F39B4 /* fmdb */,
 				4208F6371A2DE3DA004F39B4 /* 72-Hours */,
 				4208F6511A2DE3DA004F39B4 /* 72-HoursTests */,
@@ -355,7 +342,6 @@
 			files = (
 				12A4B5CA1A41A45F002BF9B7 /* HTDDeadGoalsViewController.m in Sources */,
 				4208F68E1A2DF64C004F39B4 /* HTDGoalCell.m in Sources */,
-				12FDDE351A404D6E00657CBF /* SWRevealViewController.m in Sources */,
 				429B5C591A3841910028D2A2 /* HTDGoalDetailViewController.m in Sources */,
 				4208F6411A2DE3DA004F39B4 /* HTDGoalsViewController.m in Sources */,
 				12A4B5CD1A41A481002BF9B7 /* HTDDoneGoalsViewController.m in Sources */,
@@ -490,7 +476,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "72-Hours/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -502,7 +488,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "72-Hours/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

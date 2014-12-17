@@ -13,7 +13,6 @@
 #import "HTDAction.h"
 #import "HTDGoal.h"
 #import "HTDDatabase.h"
-#import "SWRevealViewController.h"
 
 
 
@@ -28,7 +27,6 @@
 
 @property (strong, nonatomic) NSArray *activeActions;
 @property int goalID;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *revealButtonItem;
 
 @end
 
