@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "HTDNewGoalViewController.h"
+#import "HTDAction.h"
 
 @interface HTDGoalsViewController : UITableViewController <HTDNewGoalViewControllerDelegate>
 
+@property (nonatomic, strong) HTDAction *action;
 
 @end
 

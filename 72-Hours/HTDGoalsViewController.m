@@ -10,7 +10,6 @@
 #import "HTDGoalDetailViewController.h"
 #import "HTDNextActionViewController.h"
 #import "HTDGoalCell.h"
-#import "HTDAction.h"
 #import "HTDGoal.h"
 #import "HTDDatabase.h"
 
@@ -33,6 +32,12 @@
 @implementation HTDGoalsViewController
 
 
+- (IBAction)save:(UIStoryboardSegue *)segue {
+    
+    [[[HTDDatabase alloc] init] updateNextActionName:self.action];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
 
 - (instancetype)init {
     self = [super initWithStyle:UITableViewStylePlain];

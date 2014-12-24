@@ -262,14 +262,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Actions" id="580-aD-J5m">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="cHV-eO-pxi">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="7zS-zY-Hmu">
                             <connections>
-                                <action selector="save:" destination="D05-D8-dKj" id="3aX-HX-vdI"/>
+                                <segue destination="bwn-FF-1Fr" kind="unwind" identifier="unwindToGoalsView" unwindAction="save:" id="2GF-Qs-ACK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N8m-Cp-KHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bwn-FF-1Fr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="8692.5" y="845"/>
         </scene>

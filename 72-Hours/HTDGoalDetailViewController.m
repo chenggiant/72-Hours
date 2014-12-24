@@ -21,17 +21,6 @@
 @implementation HTDGoalDetailViewController
 
 
-- (IBAction)save:(id)sender {
-    // Update database with new next action
-    HTDAction *newAction  = [[HTDAction alloc] init];
-    newAction = self.actionsOfGoal[0];
-    newAction.action_name = self.txtField.text;
-    
-    [[[HTDDatabase alloc] init] updateNextActionName:newAction];
-    
-//    [self dismissViewControllerAnimated:YES completion:self.dismissBlock];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -230,6 +219,28 @@
     
     // Clear first responder
     [self.view endEditing:YES];
+}
+
+- (IBAction)save:(id)sender {
+    // Update database with new next action
+    HTDAction *newAction  = [[HTDAction alloc] init];
+    newAction = self.actionsOfGoal[0];
+    newAction.action_name = self.txtField.text;
+    
+    
+    //    [self dismissViewControllerAnimated:YES completion:self.dismissBlock];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"unwindToGoalsView"]) {
+        // Update database with new next action
+        HTDAction *newAction  = [[HTDAction alloc] init];
+        newAction = self.actionsOfGoal[0];
+        newAction.action_name = self.txtField.text;
+        HTDGoalsViewController *goalsViewController = segue.destinationViewController;
+        goalsViewController.action = newAction;
+    }
 }
 
 @end
