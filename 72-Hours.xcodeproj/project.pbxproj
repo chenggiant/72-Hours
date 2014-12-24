@@ -127,6 +127,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		123190461A4B20F90003D924 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				426F83D81A3972B90047F1B4 /* HTDDatabase.h */,
+				426F83D91A3972B90047F1B4 /* HTDDatabase.m */,
+				426F83DB1A39864F0047F1B4 /* HTDGoal.h */,
+				426F83DC1A39864F0047F1B4 /* HTDGoal.m */,
+				426F83DE1A39865F0047F1B4 /* HTDAction.h */,
+				426F83DF1A39865F0047F1B4 /* HTDAction.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		123190471A4B211E0003D924 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4208F68D1A2DF64C004F39B4 /* HTDGoalCell.xib */,
+				42BF561A1A3727630007859A /* HTDActionCell.xib */,
+				42BF56131A3719620007859A /* Main.storyboard */,
+				4208F6471A2DE3DA004F39B4 /* LaunchScreen.xib */,
+				4208F68B1A2DF64C004F39B4 /* HTDGoalCell.h */,
+				4208F68C1A2DF64C004F39B4 /* HTDGoalCell.m */,
+				42BF56181A3727630007859A /* HTDActionCell.h */,
+				42BF56191A3727630007859A /* HTDActionCell.m */,
+				426F83D21A3959F60047F1B4 /* RowForInputCell.h */,
+				426F83D31A3959F60047F1B4 /* RowForInputCell.m */,
+				426F83D51A395A090047F1B4 /* RowForToggleCell.h */,
+				426F83D61A395A090047F1B4 /* RowForToggleCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		123190481A4B21360003D924 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4208F63F1A2DE3DA004F39B4 /* HTDGoalsViewController.h */,
+				4208F6401A2DE3DA004F39B4 /* HTDGoalsViewController.m */,
+				42BF56151A371E7D0007859A /* HTDNewGoalViewController.h */,
+				42BF56161A371E7D0007859A /* HTDNewGoalViewController.m */,
+				12A4B5CE1A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.h */,
+				12A4B5CF1A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.m */,
+				12A4B5D11A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.h */,
+				12A4B5D21A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.m */,
+				429B5C571A3841910028D2A2 /* HTDGoalDetailViewController.h */,
+				429B5C581A3841910028D2A2 /* HTDGoalDetailViewController.m */,
+				12A4B5C81A41A45F002BF9B7 /* HTDDeadGoalsViewController.h */,
+				12A4B5C91A41A45F002BF9B7 /* HTDDeadGoalsViewController.m */,
+				12A4B5CB1A41A481002BF9B7 /* HTDDoneGoalsViewController.h */,
+				12A4B5CC1A41A481002BF9B7 /* HTDDoneGoalsViewController.m */,
+				429B5C5A1A3842000028D2A2 /* HTDNextActionViewController.h */,
+				429B5C5B1A3842000028D2A2 /* HTDNextActionViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		4208F62C1A2DE3DA004F39B4 = {
 			isa = PBXGroup;
 			children = (
@@ -150,42 +205,11 @@
 		4208F6371A2DE3DA004F39B4 /* 72-Hours */ = {
 			isa = PBXGroup;
 			children = (
-				426F83DB1A39864F0047F1B4 /* HTDGoal.h */,
-				426F83DC1A39864F0047F1B4 /* HTDGoal.m */,
-				426F83DE1A39865F0047F1B4 /* HTDAction.h */,
-				426F83DF1A39865F0047F1B4 /* HTDAction.m */,
-				426F83D81A3972B90047F1B4 /* HTDDatabase.h */,
-				426F83D91A3972B90047F1B4 /* HTDDatabase.m */,
-				4208F68B1A2DF64C004F39B4 /* HTDGoalCell.h */,
-				4208F68C1A2DF64C004F39B4 /* HTDGoalCell.m */,
-				42BF56181A3727630007859A /* HTDActionCell.h */,
-				42BF56191A3727630007859A /* HTDActionCell.m */,
-				426F83D21A3959F60047F1B4 /* RowForInputCell.h */,
-				426F83D31A3959F60047F1B4 /* RowForInputCell.m */,
-				426F83D51A395A090047F1B4 /* RowForToggleCell.h */,
-				426F83D61A395A090047F1B4 /* RowForToggleCell.m */,
 				4208F63C1A2DE3DA004F39B4 /* AppDelegate.h */,
 				4208F63D1A2DE3DA004F39B4 /* AppDelegate.m */,
-				4208F63F1A2DE3DA004F39B4 /* HTDGoalsViewController.h */,
-				4208F6401A2DE3DA004F39B4 /* HTDGoalsViewController.m */,
-				42BF56151A371E7D0007859A /* HTDNewGoalViewController.h */,
-				42BF56161A371E7D0007859A /* HTDNewGoalViewController.m */,
-				12A4B5CE1A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.h */,
-				12A4B5CF1A41A4DE002BF9B7 /* HTDDeadGoalDetailViewController.m */,
-				12A4B5D11A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.h */,
-				12A4B5D21A41A4F5002BF9B7 /* HTDDoneGoalDetailViewController.m */,
-				429B5C571A3841910028D2A2 /* HTDGoalDetailViewController.h */,
-				429B5C581A3841910028D2A2 /* HTDGoalDetailViewController.m */,
-				12A4B5C81A41A45F002BF9B7 /* HTDDeadGoalsViewController.h */,
-				12A4B5C91A41A45F002BF9B7 /* HTDDeadGoalsViewController.m */,
-				12A4B5CB1A41A481002BF9B7 /* HTDDoneGoalsViewController.h */,
-				12A4B5CC1A41A481002BF9B7 /* HTDDoneGoalsViewController.m */,
-				429B5C5A1A3842000028D2A2 /* HTDNextActionViewController.h */,
-				429B5C5B1A3842000028D2A2 /* HTDNextActionViewController.m */,
-				4208F68D1A2DF64C004F39B4 /* HTDGoalCell.xib */,
-				42BF561A1A3727630007859A /* HTDActionCell.xib */,
-				42BF56131A3719620007859A /* Main.storyboard */,
-				4208F6471A2DE3DA004F39B4 /* LaunchScreen.xib */,
+				123190461A4B20F90003D924 /* Model */,
+				123190471A4B211E0003D924 /* View */,
+				123190481A4B21360003D924 /* Controller */,
 				4208F6451A2DE3DA004F39B4 /* Images.xcassets */,
 				4208F6381A2DE3DA004F39B4 /* Supporting Files */,
 			);
