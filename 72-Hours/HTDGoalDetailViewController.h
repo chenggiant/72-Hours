@@ -14,5 +14,6 @@
 
 @property (nonatomic, copy) void (^dismissBlock) (void);
 
+- (IBAction)save:(id)sender;
 
 @end

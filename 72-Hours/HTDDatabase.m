@@ -236,6 +236,21 @@ For Date, may need to convert to human-readable format. Currently date is stored
 }
 
 
+- (void)markDeadGoalDeadActionAlive:(HTDAction *)action {
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
+    
+    [db open];
+    
+    
+    [db executeUpdate:@"UPDATE goal SET status = 1 WHERE goal_ID = ?", [NSNumber numberWithInt:action.goal_id]];
+    
+    [db executeUpdate:@"UPDATE action SET status = 1, date_start = ? WHERE action_ID = ?", [NSDate date], [NSNumber numberWithInt:action.action_id]];
+    
+    [db close];
+
+}
+
+
 
 
 @end

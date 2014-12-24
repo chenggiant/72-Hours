@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
+
 @interface HTDDeadGoalDetailViewController : UITableViewController
+
+
 
 @property int goalID;
 

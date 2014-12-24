@@ -12,6 +12,7 @@
 #import "HTDAction.h"
 #import "RowForToggleCell.h"
 #import "HTDDatabase.h"
+#import "HTDDeadGoalsViewController.h"
 
 @interface HTDDeadGoalDetailViewController () <UITextFieldDelegate>
 
@@ -23,10 +24,6 @@
 
 @implementation HTDDeadGoalDetailViewController
 
-- (IBAction)save:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
-
-}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -188,11 +185,16 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    
     [self.tableView reloadData];
 }
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"unwindToDeadGoalsView"]) {
+        HTDAction *action = self.actionsOfGoal[0];
+        HTDDeadGoalsViewController *deadGoalsViewController = segue.destinationViewController;
+        deadGoalsViewController.action = action;
+    }
+}
 
 
 @end

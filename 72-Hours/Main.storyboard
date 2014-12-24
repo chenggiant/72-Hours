@@ -542,10 +542,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="FB6-cf-PIy">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="aCq-q6-ZAP">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="w1R-cb-IKv">
                             <connections>
-                                <action selector="save:" destination="nip-eA-uh6" id="uQj-9P-0R8"/>
-                                <segue destination="GDJ-lQ-8Qi" kind="unwind" unwindAction="save:" id="aUM-hl-gEu"/>
+                                <segue destination="GDJ-lQ-8Qi" kind="unwind" identifier="unwindToDeadGoalsView" unwindAction="save:" id="cqc-dg-9Wl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

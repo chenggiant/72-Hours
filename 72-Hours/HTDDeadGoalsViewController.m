@@ -8,7 +8,6 @@
 
 #import "HTDDeadGoalsViewController.h"
 #import "HTDDatabase.h"
-#import "HTDAction.h"
 #import "HTDGoal.h"
 #import "HTDDeadGoalDetailViewController.h"
 
@@ -28,9 +27,12 @@
 @implementation HTDDeadGoalsViewController
 
 
--(IBAction)save:(UIStoryboardSegue *)segue {
+- (IBAction)save:(UIStoryboardSegue *)segue {
+    [[[HTDDatabase alloc] init] markDeadGoalDeadActionAlive:self.action];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
