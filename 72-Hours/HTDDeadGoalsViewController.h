@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTDDeadGoalDetailViewController.h"
 
 @interface HTDDeadGoalsViewController : UITableViewController
 

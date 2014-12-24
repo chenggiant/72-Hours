@@ -12,11 +12,25 @@
 #import "HTDGoal.h"
 #import "HTDDeadGoalDetailViewController.h"
 
+
+// System Versioning Preprocessor Macros
+#define SYSTEM_VERSION_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+
 @interface HTDDeadGoalsViewController ()
 @property (nonatomic) NSArray *deadGoals;
 @end
 
 @implementation HTDDeadGoalsViewController
+
+
+-(IBAction)save:(UIStoryboardSegue *)segue {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -130,13 +144,19 @@
 {
     if ([segue.identifier isEqualToString:@"showDeadGoalDetail"]) {
         
-        HTDDeadGoalDetailViewController *deadGoalDetailViewController = segue.destinationViewController;
-        HTDGoal *goal = sender;
-        deadGoalDetailViewController.goalID = goal.goal_id;
+        if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
+
+            HTDDeadGoalDetailViewController *deadGoalDetailViewController = segue.destinationViewController;
+            HTDGoal *goal = sender;
+            deadGoalDetailViewController.goalID = goal.goal_id;
+        } else {
+            UINavigationController *navigationController = segue.destinationViewController;
+            HTDDeadGoalDetailViewController *deadGoalDetailViewController = (HTDDeadGoalDetailViewController *)navigationController.topViewController;
+            HTDAction *action = sender;
+            deadGoalDetailViewController.goalID = action.goal_id;
+        }
     }
 }
-
-
 
 
 @end

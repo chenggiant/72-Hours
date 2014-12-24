@@ -271,7 +271,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N8m-Cp-KHk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5938.5" y="845"/>
+            <point key="canvasLocation" x="8692.5" y="845"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qkN-Jc-KaO">
@@ -290,7 +290,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvZ-YL-OQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5188.5" y="845"/>
+            <point key="canvasLocation" x="7942.5" y="845"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cFL-oi-OXd">
@@ -383,9 +383,11 @@
         <scene sceneID="gXH-cH-ZRx">
             <objects>
                 <tableViewController id="EQN-t0-S5a" customClass="HTDDoneGoalDetailViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nhb-s8-cRO">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="nhb-s8-cRO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="doneGoalActionCell" id="dAw-Tc-hcX">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -484,7 +486,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Dead Goals" id="qxU-fn-tOg"/>
                     <connections>
-                        <segue destination="nip-eA-uh6" kind="show" identifier="showDeadGoalDetail" id="Bxw-NE-bPd"/>
+                        <segue destination="Z9f-AR-sTY" kind="show" identifier="showDeadGoalDetail" id="wzK-uq-tab"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5a-cB-4Id" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -495,14 +497,42 @@
         <scene sceneID="90C-Ee-TeU">
             <objects>
                 <tableViewController id="nip-eA-uh6" customClass="HTDDeadGoalDetailViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Nyf-HX-2kv">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Nyf-HX-2kv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deadGoalActionCell" id="0B1-BV-wVG">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RowForInputCell" id="0B1-BV-wVG" customClass="RowForInputCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0B1-BV-wVG" id="8iR-LT-9x4">
                                     <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RowForToggleCell" id="hCb-gl-kk3" customClass="RowForToggleCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hCb-gl-kk3" id="zH5-Qn-9y0">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make goal alive" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cI-Wa-lCb">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="12" y="6" width="189" height="32"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="1cI-Wa-lCb"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="1cI-Wa-lCb"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -511,10 +541,19 @@
                             <outlet property="delegate" destination="nip-eA-uh6" id="6aI-qZ-x4V"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="FB6-cf-PIy">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="aCq-q6-ZAP">
+                            <connections>
+                                <action selector="save:" destination="nip-eA-uh6" id="uQj-9P-0R8"/>
+                                <segue destination="GDJ-lQ-8Qi" kind="unwind" unwindAction="save:" id="aUM-hl-gEu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awC-Xp-eQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GDJ-lQ-8Qi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4029" y="1144"/>
+            <point key="canvasLocation" x="5223" y="1144"/>
         </scene>
         <!--Dead-->
         <scene sceneID="Edy-r5-DkE">
@@ -532,6 +571,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zmH-qt-Tl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2094" y="1154"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="V7m-tE-0GH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z9f-AR-sTY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kKe-uf-vDW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nip-eA-uh6" kind="relationship" relationship="rootViewController" id="Hmu-BY-0Q9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J3q-QH-Uiu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4305" y="1144"/>
         </scene>
     </scenes>
 </document>
