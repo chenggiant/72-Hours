@@ -140,6 +140,22 @@
     
     // reload tableview every 10 min to update the timeleft
     [NSTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
+    
+    UIImageView *dotImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Dot"]];
+    
+    dotImage.backgroundColor = [UIColor clearColor];
+    
+    UITabBarController *tabBarController = self.tabBarController;
+    
+    CGRect tabFrame = tabBarController.tabBar.frame;
+    
+    CGFloat x = ceilf(0.2 * tabFrame.size.width);
+    
+    CGFloat y = ceilf(0.1 * tabFrame.size.height);
+    
+    dotImage.frame = CGRectMake(x, y, 9, 9);
+    
+    [tabBarController.tabBar addSubview:dotImage];
 
 }
 

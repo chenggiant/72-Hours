@@ -315,7 +315,7 @@
         <scene sceneID="O7b-kU-P2M">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uuq-TH-LnX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Active" image="Active" id="kLS-8C-i9V"/>
+                    <tabBarItem key="tabBarItem" tag="100" title="Active" image="Active" id="kLS-8C-i9V"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9qT-iJ-ct4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
