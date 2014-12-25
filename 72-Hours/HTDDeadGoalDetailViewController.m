@@ -145,7 +145,7 @@
     
     switch (section) {
         case 0:
-            myLabel.text = @"Next action...";
+            myLabel.text = @"Still want to achive the goal?";
             sideLabel.text = @"";
             sideLabel.frame = CGRectMake(tableView.frame.size.width - stringSection0.width - 10, 10, tableView.frame.size.width - 100, 16);
             break;

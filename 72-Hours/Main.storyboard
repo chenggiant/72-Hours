@@ -315,7 +315,7 @@
         <scene sceneID="O7b-kU-P2M">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uuq-TH-LnX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Active" id="kLS-8C-i9V"/>
+                    <tabBarItem key="tabBarItem" title="Active" image="Active" id="kLS-8C-i9V"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9qT-iJ-ct4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -411,7 +411,7 @@
         <scene sceneID="A1m-8b-xgy">
             <objects>
                 <navigationController id="8Tl-Ay-ofU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Done" id="VhG-pP-i3J"/>
+                    <tabBarItem key="tabBarItem" title="Done" image="Done" id="VhG-pP-i3J"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Rr-26-4qR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -559,7 +559,7 @@
         <scene sceneID="Edy-r5-DkE">
             <objects>
                 <navigationController id="dJa-ZQ-Nid" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dead" id="DcV-Dw-DDM"/>
+                    <tabBarItem key="tabBarItem" title="Dead" image="Dead" id="DcV-Dw-DDM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B1m-Kv-knM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -591,4 +591,9 @@
             <point key="canvasLocation" x="4305" y="1144"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Active" width="25" height="25"/>
+        <image name="Dead" width="25" height="27"/>
+        <image name="Done" width="24" height="23"/>
+    </resources>
 </document>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>254E2FC4-7622-46A1-9E68-4169F37030FC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>72-Hours</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0B80A951BAC98BC92AF3AD443265669E513DC4C1</key>
+		<string>https://bitbucket.org/chengchi/72-hours.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>72-Hours.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0B80A951BAC98BC92AF3AD443265669E513DC4C1</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/chengchi/72-hours.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0B80A951BAC98BC92AF3AD443265669E513DC4C1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0B80A951BAC98BC92AF3AD443265669E513DC4C1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>72-Hours</string>
+		</dict>
+	</array>
+</dict>
+</plist>
