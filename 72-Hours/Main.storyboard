@@ -334,10 +334,10 @@
         <scene sceneID="x3h-HL-Tor">
             <objects>
                 <tableViewController id="Kqg-o5-KXO" customClass="HTDDoneGoalsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EYi-zr-8c5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="EYi-zr-8c5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="doneGoalCell" textLabel="q35-mx-ltU" detailTextLabel="yER-pr-yfk" style="IBUITableViewCellStyleValue1" id="zdG-F0-bvQ">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -448,12 +448,12 @@
         <scene sceneID="1oG-Mq-yrZ">
             <objects>
                 <tableViewController id="RSD-zR-8uE" customClass="HTDDeadGoalsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EmW-61-ANs">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="EmW-61-ANs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="deadGoalCell" textLabel="rRk-KW-DWY" detailTextLabel="hIK-xf-Cg4" style="IBUITableViewCellStyleValue1" id="0Gy-iT-iMO">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="deadGoalCell" textLabel="rRk-KW-DWY" detailTextLabel="hIK-xf-Cg4" style="IBUITableViewCellStyleValue1" id="0Gy-iT-iMO">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Gy-iT-iMO" id="agF-It-zO4">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -594,6 +594,6 @@
     <resources>
         <image name="Active" width="25" height="25"/>
         <image name="Dead" width="25" height="27"/>
-        <image name="Done" width="24" height="23"/>
+        <image name="Done" width="29" height="27"/>
     </resources>
 </document>
