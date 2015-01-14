@@ -12,6 +12,7 @@
 #import "HTDAction.h"
 #import "RowForToggleCell.h"
 #import "HTDDatabase.h"
+#import "HTDGoalsViewController.h"
 
 @interface HTDNextActionViewController () <UITextFieldDelegate>
 
@@ -29,19 +30,28 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+///////////////////////////////////////////////////////////////////
+// Need to fix here
+///////////////////////////////////////////////////////////////////
+
 - (IBAction)save:(id)sender {
     if (self.goalState) {
         // Update TABLE goal and action to change goal state to finished
         [[[HTDDatabase alloc] init] markGoalAchieved:self.goalID];
+        [self dismissViewControllerAnimated:YES completion:^{
+            HTDGoalsViewController *goalsViewController = [[HTDGoalsViewController alloc] init];
+            [goalsViewController showRedDotOnDoneTab];
+        }];
     } else {
         // Insert new action to database
         HTDAction *action = [[HTDAction alloc] init];
         action.action_name = self.inputField.text;
         action.goal_id = self.goalID;
         [[[HTDDatabase alloc] init] insertNewNextAction:action];
+        [self dismissViewControllerAnimated:YES completion:nil];
+
     }
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -245,12 +255,13 @@
     [self.inputField resignFirstResponder];
 }
 
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    
     [self.tableView reloadData];
 }
+
 
 
 

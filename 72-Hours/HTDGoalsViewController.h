@@ -14,5 +14,8 @@
 
 @property (nonatomic, strong) HTDAction *action;
 
+
+- (void)showRedDotOnDoneTab;
+
 @end
 

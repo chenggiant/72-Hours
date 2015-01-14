@@ -41,6 +41,7 @@
     self.doneGoals = [[[HTDDatabase alloc] init] selectGoalsWithStatus:0];
     
     [self.tableView reloadData];
+    [self hideRedDotOnDoneTab];
 
 }
 
@@ -69,8 +70,19 @@
     HTDGoal *goal = [[HTDGoal alloc] init];
     goal = self.doneGoals[indexPath.row];
     
+    NSArray *actions = [[[HTDDatabase alloc] init] selectActionsWithGoalID:goal.goal_id];
+    
+    
+    // calculate total time spent for a specific goal
+    int totalTime = 0;
+    
+    for (HTDAction *action in actions) {
+        NSTimeInterval distanceBetweenDates = [action.date_end timeIntervalSinceDate:action.date_start];
+        totalTime += distanceBetweenDates/3600;
+    }
+    
     cell.textLabel.text = goal.goal_name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", 100];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", totalTime];
     
     return cell;
 }
@@ -137,7 +149,6 @@
 }
 
 
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showDoneGoalDetail"]) {
@@ -145,6 +156,13 @@
         HTDDoneGoalDetailViewController *doneGoalDetailViewController = segue.destinationViewController;
         HTDGoal *goal = sender;
         doneGoalDetailViewController.goalID = goal.goal_id;
+    }
+}
+
+- (void)hideRedDotOnDoneTab {
+    UIView *viewToRemove = [self.tabBarController.tabBar viewWithTag:53];
+    if (viewToRemove) {
+        [viewToRemove removeFromSuperview];
     }
 }
 

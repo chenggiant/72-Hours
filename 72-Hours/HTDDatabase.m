@@ -84,7 +84,7 @@
     
     [db open];
     
-    FMResultSet *result = [db executeQuery:@"SELECT *,(SELECT name FROM goal WHERE goal.goal_ID = action.goal_ID) AS goal_name FROM action WHERE status = ?", [NSNumber numberWithInt:state]];
+    FMResultSet *result = [db executeQuery:@"SELECT *,(SELECT name FROM goal WHERE goal.goal_ID = action.goal_ID) AS goal_name FROM action WHERE status = ? ORDER BY action.date_start DESC", [NSNumber numberWithInt:state]];
     while([result next])
     {
         HTDAction *action = [[HTDAction alloc] init];

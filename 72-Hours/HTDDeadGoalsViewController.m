@@ -30,6 +30,7 @@
 - (IBAction)save:(UIStoryboardSegue *)segue {
     [[[HTDDatabase alloc] init] markDeadGoalDeadActionAlive:self.action];
     
+    [self showRedDotOnActiveTab];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -37,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -48,6 +50,8 @@
     self.deadGoals = [[[HTDDatabase alloc] init] selectGoalsWithStatus:2];
     
     [self.tableView reloadData];
+    [self hideRedDotOnDeadTab];
+
 
 }
 
@@ -160,5 +164,31 @@
     }
 }
 
+
+- (void)hideRedDotOnDeadTab {
+    UIView *viewToRemove = [self.tabBarController.tabBar viewWithTag:87];
+    if (viewToRemove) {
+        [viewToRemove removeFromSuperview];
+    }
+}
+
+
+- (void)showRedDotOnActiveTab {
+    UITabBarController *tabBarController = self.tabBarController;
+    CGRect tabFrame = tabBarController.tabBar.frame;
+    
+    CGFloat x = ceilf(0.2 * tabFrame.size.width);
+    CGFloat y = ceilf(0.1 * tabFrame.size.height);
+    
+    UIImageView *dotImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Dot"]];
+    
+    dotImage.backgroundColor = [UIColor clearColor];
+    
+    dotImage.frame = CGRectMake(x, y, 9, 9);
+    
+    dotImage.tag = 20;
+    
+    [tabBarController.tabBar addSubview:dotImage];
+}
 
 @end

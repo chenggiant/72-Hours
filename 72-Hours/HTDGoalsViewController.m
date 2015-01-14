@@ -43,6 +43,7 @@
     self = [super initWithStyle:UITableViewStylePlain];
     
     return self;
+    
 }
 
 
@@ -100,6 +101,11 @@
     } else {
         // mark action dead and also mark goal dead
         [[[HTDDatabase alloc] init] markLastActionAndGoalDead:action];
+        
+        [self refreshTable];
+        
+        // activate red dot on dead view
+        [self showRedDotOnDeadTab];
     }
     
 //    cell.timeLeft.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y - cell.timeLeft.frame.size.height, cell.imageView.frame.size.width, cell.timeLeft.frame.size.height);
@@ -129,6 +135,9 @@
     [self.tableView reloadData];
 }
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -141,33 +150,22 @@
     // reload tableview every 10 min to update the timeleft
     [NSTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
     
-    UIImageView *dotImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Dot"]];
-    
-    dotImage.backgroundColor = [UIColor clearColor];
-    
-    UITabBarController *tabBarController = self.tabBarController;
-    
-    CGRect tabFrame = tabBarController.tabBar.frame;
-    
-    CGFloat x = ceilf(0.2 * tabFrame.size.width);
-    
-    CGFloat y = ceilf(0.1 * tabFrame.size.height);
-    
-    dotImage.frame = CGRectMake(x, y, 9, 9);
-    
-    [tabBarController.tabBar addSubview:dotImage];
 
 }
-
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     self.activeActions = [[[HTDDatabase alloc] init] selectActionsWithStatus:1];
     
+    // remove empty cells
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    
     [self.tableView reloadData];
-}
+    
+    [self hideRedDotOnActiveTab];
 
+}
 
 - (void)HTDNewGoalViewController:(HTDNewGoalViewController *)controller didAddGoal:(HTDAction *)action {
     // Insert action to database
@@ -216,5 +214,49 @@
     }
 }
 
+
+- (void)showRedDotOnDeadTab {
+    UITabBarController *tabBarController = self.tabBarController;
+    CGRect tabFrame = tabBarController.tabBar.frame;
+    
+    CGFloat x = ceilf(0.87 * tabFrame.size.width);
+    CGFloat y = ceilf(0.1 * tabFrame.size.height);
+    
+    UIImageView *dotImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Dot"]];
+    
+    dotImage.backgroundColor = [UIColor clearColor];
+    
+    dotImage.frame = CGRectMake(x, y, 9, 9);
+    
+    dotImage.tag = 87;
+    
+    [tabBarController.tabBar addSubview:dotImage];
+}
+
+
+- (void)hideRedDotOnActiveTab {
+    UIView *viewToRemove = [self.tabBarController.tabBar viewWithTag:20];
+    if (viewToRemove) {
+        [viewToRemove removeFromSuperview];
+    }
+}
+
+- (void)showRedDotOnDoneTab {
+    UITabBarController *tabBarController = self.tabBarController;
+    CGRect tabFrame = tabBarController.tabBar.frame;
+    
+    CGFloat x = ceilf(0.53 * tabFrame.size.width);
+    CGFloat y = ceilf(0.1 * tabFrame.size.height);
+    
+    UIImageView *dotImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Dot"]];
+    
+    dotImage.backgroundColor = [UIColor clearColor];
+    
+    dotImage.frame = CGRectMake(x, y, 9, 9);
+    
+    dotImage.tag = 53;
+    
+    [tabBarController.tabBar addSubview:dotImage];
+}
 
 @end
