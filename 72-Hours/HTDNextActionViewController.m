@@ -39,16 +39,15 @@
     if (self.goalState) {
         // Update TABLE goal and action to change goal state to finished
         [[[HTDDatabase alloc] init] markGoalAchieved:self.goalID];
-        [self dismissViewControllerAnimated:YES completion:^{
-            HTDGoalsViewController *goalsViewController = [[HTDGoalsViewController alloc] init];
-            [goalsViewController showRedDotOnDoneTab];
-        }];
+        
+        [self.delegate showRedDotOnDoneTab:self];
     } else {
         // Insert new action to database
         HTDAction *action = [[HTDAction alloc] init];
         action.action_name = self.inputField.text;
         action.goal_id = self.goalID;
         [[[HTDDatabase alloc] init] insertNewNextAction:action];
+        
         [self dismissViewControllerAnimated:YES completion:nil];
 
     }

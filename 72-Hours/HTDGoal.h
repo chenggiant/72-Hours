@@ -22,5 +22,7 @@
 @property int status;
 @property int goal_id;
 @property int dead_count;
+@property int highlight_indicate;
+
 
 @end

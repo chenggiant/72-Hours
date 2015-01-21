@@ -13,7 +13,6 @@
 @interface HTDDatabase : NSObject
 
 
-
 // for status
 // 0 means goal finished;
 // 1 means goal active;

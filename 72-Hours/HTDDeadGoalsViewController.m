@@ -50,8 +50,8 @@
     self.deadGoals = [[[HTDDatabase alloc] init] selectGoalsWithStatus:2];
     
     [self.tableView reloadData];
+    
     [self hideRedDotOnDeadTab];
-
 
 }
 
@@ -169,6 +169,7 @@
     UIView *viewToRemove = [self.tabBarController.tabBar viewWithTag:87];
     if (viewToRemove) {
         [viewToRemove removeFromSuperview];
+        [self hideRedDotOnDeadTab];
     }
 }
 

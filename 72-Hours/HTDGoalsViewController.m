@@ -8,11 +8,9 @@
 
 #import "HTDGoalsViewController.h"
 #import "HTDGoalDetailViewController.h"
-#import "HTDNextActionViewController.h"
 #import "HTDGoalCell.h"
 #import "HTDGoal.h"
 #import "HTDDatabase.h"
-
 
 
 // System Versioning Preprocessor Macros
@@ -43,7 +41,6 @@
     self = [super initWithStyle:UITableViewStylePlain];
     
     return self;
-    
 }
 
 
@@ -77,10 +74,8 @@
     HTDAction *action = [[HTDAction alloc] init];
     action = self.activeActions[indexPath.row];
     
-    
     cell.actionName.text = action.action_name;
     cell.goalName.text = action.goal_name;
-
     
     NSDate *today = [NSDate date];
     NSTimeInterval distanceBetweenDates = [today timeIntervalSinceDate:action.date_start];
@@ -89,19 +84,27 @@
     cell.timeLeft.text = [NSString stringWithFormat:@"%d", (72-hoursBetweenDates)];
     
     
+    if (action.highlight_indicate == 0) {
+        NSLog(@"It is true");
+        cell.backgroundColor = [UIColor blueColor];
+    }
+    
     if (hoursBetweenDates <= 24) {
         UIImage *image = [UIImage imageNamed: @"Oval_green"];
         [cell.ovalImageView setImage:image];
     } else if (hoursBetweenDates <= 48) {
         UIImage *image = [UIImage imageNamed: @"Oval"];
         [cell.ovalImageView setImage:image];
-    } else if (hoursBetweenDates <= 72){
+    } else if (hoursBetweenDates < 72){
         UIImage *image = [UIImage imageNamed: @"Oval_red"];
         [cell.ovalImageView setImage:image];
     } else {
         // mark action dead and also mark goal dead
         [[[HTDDatabase alloc] init] markLastActionAndGoalDead:action];
         
+        // update the actions in this view controller !!!
+        self.activeActions = [[[HTDDatabase alloc] init] selectActionsWithStatus:1];
+
         [self refreshTable];
         
         // activate red dot on dead view
@@ -132,10 +135,11 @@
 
 
 - (void)refreshTable {
+    // this may be too heavy to process
+//    self.activeActions = [[[HTDDatabase alloc] init] selectActionsWithStatus:1];
+
     [self.tableView reloadData];
 }
-
-
 
 
 - (void)viewDidLoad {
@@ -148,8 +152,7 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"HTDGoalCell"];
     
     // reload tableview every 10 min to update the timeleft
-    [NSTimer scheduledTimerWithTimeInterval:600 target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
-    
+    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
 
 }
 
@@ -164,7 +167,7 @@
     [self.tableView reloadData];
     
     [self hideRedDotOnActiveTab];
-
+    
 }
 
 - (void)HTDNewGoalViewController:(HTDNewGoalViewController *)controller didAddGoal:(HTDAction *)action {
@@ -209,7 +212,7 @@
         
         HTDNextActionViewController *nextActionViewController = (HTDNextActionViewController *)navigationController.topViewController;
         HTDAction *action = sender;
-        
+        nextActionViewController.delegate = self;
         nextActionViewController.goalID = action.goal_id;
     }
 }
@@ -238,10 +241,12 @@
     UIView *viewToRemove = [self.tabBarController.tabBar viewWithTag:20];
     if (viewToRemove) {
         [viewToRemove removeFromSuperview];
+        [self hideRedDotOnActiveTab];
     }
 }
 
-- (void)showRedDotOnDoneTab {
+
+- (void)showRedDotOnDoneTab:(HTDNextActionViewController *)controller {
     UITabBarController *tabBarController = self.tabBarController;
     CGRect tabFrame = tabBarController.tabBar.frame;
     
@@ -257,6 +262,9 @@
     dotImage.tag = 53;
     
     [tabBarController.tabBar addSubview:dotImage];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 @end

@@ -25,6 +25,7 @@
 @property int status;
 @property int action_id;
 @property int goal_id;
+@property int highlight_indicate;
 
 
 @end

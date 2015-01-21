@@ -28,6 +28,7 @@
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
         self.databasePath = [documentsDirectory stringByAppendingPathComponent:@"/72Hours.sqlite"];
+//        NSLog(@"%@", self.databasePath);
     }
     return self;
 }
@@ -84,7 +85,7 @@
     
     [db open];
     
-    FMResultSet *result = [db executeQuery:@"SELECT *,(SELECT name FROM goal WHERE goal.goal_ID = action.goal_ID) AS goal_name FROM action WHERE status = ? ORDER BY action.date_start DESC", [NSNumber numberWithInt:state]];
+    FMResultSet *result = [db executeQuery:@"SELECT *,(SELECT name FROM goal WHERE goal.goal_ID = action.goal_ID) AS goal_name, (SELECT highlight_indicate FROM goal WHERE goal.goal_ID = action.goal_ID) AS goal_indicator FROM action WHERE status = ? ORDER BY action.date_start DESC", [NSNumber numberWithInt:state]];
     while([result next])
     {
         HTDAction *action = [[HTDAction alloc] init];
@@ -95,6 +96,7 @@
         action.action_id = [result intForColumn:@"action_ID"];
         action.goal_id = [result intForColumn:@"goal_ID"];
         action.status = [result intForColumn:@"status"];
+        action.highlight_indicate = [result intForColumn:@"goal_indicator"];
         [selectedActions addObject:action];
     }
     [db close];
@@ -109,7 +111,8 @@
     
     [db open];
     
-    FMResultSet *result = [db executeQuery:@"SELECT *,(SELECT name FROM goal WHERE goal.goal_ID = ?) AS goal_name from action WHERE goal_ID = ? ORDER BY action.date_start DESC", [NSNumber numberWithInt:goalID], [NSNumber numberWithInt:goalID]];
+    // SELECT *, goal.name as goal_name, goal.highlight_indicate FROM action JOIN goal ON action.goal_ID = goal.goal_ID WHERE action.goal_ID = 1 ORDER BY action.date_start DESC
+    FMResultSet *result = [db executeQuery:@"SELECT *,(SELECT name FROM goal WHERE goal.goal_ID = ?) AS goal_name, (SELECT highlight_indicate FROM goal WHERE goal.goal_ID = ?) AS goal_indicator from action WHERE goal_ID = ? ORDER BY action.date_start DESC", [NSNumber numberWithInt:goalID], [NSNumber numberWithInt:goalID], [NSNumber numberWithInt:goalID]];
     while([result next])
     {
         HTDAction *action = [[HTDAction alloc] init];
@@ -120,6 +123,7 @@
         action.action_id = [result intForColumn:@"action_ID"];
         action.goal_id = [result intForColumn:@"goal_ID"];
         action.status = [result intForColumn:@"status"];
+        action.highlight_indicate = [result intForColumn:@"goal_indicator"];
         [selectedActions addObject:action];
     }
     [db close];
@@ -214,6 +218,8 @@ For Date, may need to convert to human-readable format. Currently date is stored
 
 - (void)markLastActionAndGoalDead:(HTDAction *)action {
     
+//    NSLog(@"This is running");
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     
@@ -231,7 +237,6 @@ For Date, may need to convert to human-readable format. Currently date is stored
     [db executeUpdate:@"UPDATE goal SET dead_count = dead_count + 1 WHERE goal_ID = ?", [NSNumber numberWithInt:action.goal_id]];
 
     [db close];
-
     
 }
 

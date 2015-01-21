@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "HTDNewGoalViewController.h"
+#import "HTDNextActionViewController.h"
 #import "HTDAction.h"
 
-@interface HTDGoalsViewController : UITableViewController <HTDNewGoalViewControllerDelegate>
+@interface HTDGoalsViewController : UITableViewController <HTDNewGoalViewControllerDelegate, HTDNextActionViewControllerDelegate>
 
 @property (nonatomic, strong) HTDAction *action;
 
 
-- (void)showRedDotOnDoneTab;
+@property (nonatomic) BOOL showRedDot;
 
 @end
 

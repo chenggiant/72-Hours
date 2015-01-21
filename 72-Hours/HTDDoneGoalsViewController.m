@@ -163,6 +163,7 @@
     UIView *viewToRemove = [self.tabBarController.tabBar viewWithTag:53];
     if (viewToRemove) {
         [viewToRemove removeFromSuperview];
+        [self hideRedDotOnDoneTab];
     }
 }
 

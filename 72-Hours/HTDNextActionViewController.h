@@ -8,7 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class HTDNextActionViewController;
+
+@protocol HTDNextActionViewControllerDelegate <NSObject>
+
+- (void)showRedDotOnDoneTab:(HTDNextActionViewController *)controller;
+
+@end
+
 @interface HTDNextActionViewController : UITableViewController
+
+@property (nonatomic, weak) id <HTDNextActionViewControllerDelegate> delegate;
+
 
 @property int goalID;
 
