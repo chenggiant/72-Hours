@@ -106,6 +106,9 @@
             double secondsInAnHour = 3600;
             int hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
             cellAction.timeSpentLabel.text = [NSString stringWithFormat:@"%d", hoursBetweenDates];
+            if (hoursBetweenDates > 72) {
+                cellAction.timeSpentLabel.text = @"72";
+            }
             
             
             //            cellAction.timeSpentLabel.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y - cellAction.timeSpentLabel.frame.size.height, cell.imageView.frame.size.width, cellAction.timeSpentLabel.frame.size.height);

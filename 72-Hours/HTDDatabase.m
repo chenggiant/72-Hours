@@ -229,6 +229,9 @@ For Date, may need to convert to human-readable format. Currently date is stored
     
     // mark action dead
     [db executeUpdate:@"UPDATE action SET status = 2 WHERE action_ID = ?", [NSNumber numberWithInt:action.action_id]];
+    
+    // mark last action dead
+    [db executeUpdate:@"UPDATE action SET date_end = ? WHERE action_ID = ?", [NSDate date],[NSNumber numberWithInt:action.action_id]];
 
     // mark goal dead
     [db executeUpdate:@"UPDATE goal SET status = 2 WHERE goal_ID = ?", [NSNumber numberWithInt:action.goal_id]];
@@ -248,6 +251,7 @@ For Date, may need to convert to human-readable format. Currently date is stored
     
     
     [db executeUpdate:@"UPDATE goal SET status = 1 WHERE goal_ID = ?", [NSNumber numberWithInt:action.goal_id]];
+    
     
     [db executeUpdate:@"UPDATE action SET status = 1, date_start = ? WHERE action_ID = ?", [NSDate date], [NSNumber numberWithInt:action.action_id]];
     

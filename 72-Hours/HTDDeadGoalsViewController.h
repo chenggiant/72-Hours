@@ -1,5 +1,5 @@
 //
-//  HTDDeanGoalsViewController.h
+//  HTDDeadGoalsViewController.h
 //  72-Hours
 //
 //  Created by Ran on 17/12/14.
@@ -13,5 +13,7 @@
 @interface HTDDeadGoalsViewController : UITableViewController
 
 @property (nonatomic, strong) HTDAction *action;
+
+
 
 @end

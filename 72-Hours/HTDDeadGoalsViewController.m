@@ -5,11 +5,12 @@
 //  Created by Ran on 17/12/14.
 //  Copyright (c) 2014 CHI. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
 #import "HTDDeadGoalsViewController.h"
 #import "HTDDatabase.h"
 #import "HTDGoal.h"
 #import "HTDDeadGoalDetailViewController.h"
+#import "HTDDefaultViewController.h"
 
 
 // System Versioning Preprocessor Macros
@@ -49,7 +50,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.deadGoals = [[[HTDDatabase alloc] init] selectGoalsWithStatus:2];
     
+    if ([self.deadGoals count] != 0) {
+        [self removeDefaultViewController];
+    }
+    
+    
     [self.tableView reloadData];
+    
+    
     
     [self hideRedDotOnDeadTab];
 
@@ -65,7 +73,31 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    if ([self.deadGoals count] != 0) {
+        [self removeDefaultViewController];
+        return 1;
+    } else {
+        // Display a message when the table is empty
+        
+        if (![[self.childViewControllers lastObject] isKindOfClass:[HTDDefaultViewController class]]) {
+
+            HTDDefaultViewController *defaultController = [[HTDDefaultViewController alloc] init];
+            
+            [self addChildViewController:defaultController];
+            
+            CGFloat width = self.tableView.frame.size.width;
+            CGFloat height = self.view.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height - self.navigationController.navigationBar.frame.size.height - self.tabBarController.tabBar.bounds.size.height;
+            CGRect frame = CGRectMake(0, 0, width, height);
+            defaultController.view.frame = frame;
+            defaultController.defaultText.text = @"Dead tab collects goals that are out of time.";
+            [defaultController.defaultText setCenter:defaultController.view.center];
+    //        defaultController.defaultText.layer.borderColor = [UIColor grayColor].CGColor;
+    //        defaultController.defaultText.layer.borderWidth = 1.0;
+            [self.tableView addSubview:defaultController.view];
+            [defaultController didMoveToParentViewController:self];
+        }
+    }
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -161,6 +193,19 @@
             HTDAction *action = sender;
             deadGoalDetailViewController.goalID = action.goal_id;
         }
+    }
+}
+
+
+
+- (void)removeDefaultViewController {
+    if ([[self.childViewControllers lastObject] isKindOfClass:[HTDDefaultViewController class]]) {
+        UIViewController *defaultController = [self.childViewControllers lastObject];
+        
+        [defaultController willMoveToParentViewController:nil];
+        [defaultController.view removeFromSuperview];
+        [defaultController removeFromParentViewController];
+        [self removeDefaultViewController];
     }
 }
 

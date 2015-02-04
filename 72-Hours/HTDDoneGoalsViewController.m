@@ -11,6 +11,7 @@
 #import "HTDAction.h"
 #import "HTDGoal.h"
 #import "HTDDoneGoalDetailViewController.h"
+#import "HTDDefaultViewController.h"
 
 
 // System Versioning Preprocessor Macros
@@ -30,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.tableView reloadData];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -39,6 +41,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.doneGoals = [[[HTDDatabase alloc] init] selectGoalsWithStatus:0];
+    
+    if ([self.doneGoals count] > 0) {
+        [self removeDefaultViewController];
+    }
     
     [self.tableView reloadData];
     [self hideRedDotOnDoneTab];
@@ -55,7 +61,30 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    if ([self.doneGoals count] != 0) {
+        [self removeDefaultViewController];
+        return 1;
+    } else {
+        
+        // Display a message when the table is empty
+        
+        if (![[self.childViewControllers lastObject] isKindOfClass:[HTDDefaultViewController class]]) {
+
+            HTDDefaultViewController *defaultController = [[HTDDefaultViewController alloc] init];
+            
+            [self addChildViewController:defaultController];
+            
+            CGFloat width = self.tableView.frame.size.width;
+            CGFloat height = self.view.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height - self.navigationController.navigationBar.frame.size.height - self.tabBarController.tabBar.bounds.size.height;
+            CGRect frame = CGRectMake(0, 0, width, height);
+            defaultController.view.frame = frame;
+            defaultController.defaultText.text = @"Done tab collects goals you have achieved.";
+            [defaultController.defaultText setCenter:defaultController.view.center];
+            [self.tableView addSubview:defaultController.view];
+            [defaultController didMoveToParentViewController:self];
+        }
+    }
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -156,6 +185,18 @@
         HTDDoneGoalDetailViewController *doneGoalDetailViewController = segue.destinationViewController;
         HTDGoal *goal = sender;
         doneGoalDetailViewController.goalID = goal.goal_id;
+    }
+}
+
+
+- (void)removeDefaultViewController {
+    if ([[self.childViewControllers lastObject] isKindOfClass:[HTDDefaultViewController class]]) {
+        UIViewController *defaultController = [self.childViewControllers lastObject];
+        
+        [defaultController willMoveToParentViewController:nil];
+        [defaultController.view removeFromSuperview];
+        [defaultController removeFromParentViewController];
+        [self removeDefaultViewController];
     }
 }
 

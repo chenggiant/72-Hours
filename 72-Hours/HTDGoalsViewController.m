@@ -11,6 +11,7 @@
 #import "HTDGoalCell.h"
 #import "HTDGoal.h"
 #import "HTDDatabase.h"
+#import "HTDDefaultViewController.h"
 
 
 // System Versioning Preprocessor Macros
@@ -49,9 +50,43 @@
 }
 
 
+- (void)removeDefaultViewController {
+    if ([[self.childViewControllers lastObject] isKindOfClass:[HTDDefaultViewController class]]) {
+        UIViewController *defaultController = [self.childViewControllers lastObject];
+        
+        [defaultController willMoveToParentViewController:nil];
+        [defaultController.view removeFromSuperview];
+        [defaultController removeFromParentViewController];
+        [self removeDefaultViewController];
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSInteger numSections = 1;
-    return numSections;
+    // Return the number of sections.
+    if ([self.activeActions count] != 0) {
+        
+        [self removeDefaultViewController];
+        
+        return 1;
+    } else {
+        // Display a message when the table is empty
+        if (![[self.childViewControllers lastObject] isKindOfClass:[HTDDefaultViewController class]]) {
+            HTDDefaultViewController *defaultController = [[HTDDefaultViewController alloc] init];
+            
+            [self addChildViewController:defaultController];
+            
+            CGFloat width = self.tableView.frame.size.width;
+            CGFloat height = self.view.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height - self.navigationController.navigationBar.frame.size.height - self.tabBarController.tabBar.bounds.size.height;
+            CGRect frame = CGRectMake(0, 0, width, height);
+            defaultController.view.frame = frame;
+            defaultController.defaultText.text = @"Active tab collects goals you want to achieve.";
+            [defaultController.defaultText setCenter:defaultController.view.center];
+            //        defaultController.defaultText.layer.borderColor = [UIColor grayColor].CGColor;
+            //        defaultController.defaultText.layer.borderWidth = 1.0;
+            [self.view addSubview:defaultController.view];
+        }
+    }
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -85,8 +120,7 @@
     
     
     if (action.highlight_indicate == 0) {
-        NSLog(@"It is true");
-        cell.backgroundColor = [UIColor blueColor];
+        cell.backgroundColor = [UIColor grayColor];
     }
     
     if (hoursBetweenDates <= 24) {
@@ -160,6 +194,10 @@
     [super viewWillAppear:animated];
     
     self.activeActions = [[[HTDDatabase alloc] init] selectActionsWithStatus:1];
+    
+    if ([self.activeActions count] > 0) {
+        [self removeDefaultViewController];
+    }
     
     // remove empty cells
     self.tableView.tableFooterView = [[UIView alloc] init];
