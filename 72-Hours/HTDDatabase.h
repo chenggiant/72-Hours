@@ -19,7 +19,6 @@
 // 2 means goal dead;
 
 
-
 // Selection Queries
 - (NSArray *)selectActionsWithStatus:(int)state;
 - (NSArray *)selectActionsWithGoalID:(int)goalID;
@@ -35,5 +34,7 @@
 - (void)insertNewNextAction:(HTDAction *)action;
 - (void)markLastActionAndGoalDead:(HTDAction *)action;
 - (void)markDeadGoalDeadActionAlive:(HTDAction *)action;
+- (void)highlightGoalIndicator:(HTDAction *)action;
+- (void)unhighlightAllGoalsIndicator;
 
 @end

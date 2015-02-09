@@ -59,7 +59,7 @@
     
     [db open];
     
-    FMResultSet *result = [db executeQuery:@"SELECT * FROM goal WHERE status = ?", [NSNumber numberWithInt:state]];
+    FMResultSet *result = [db executeQuery:@"SELECT * FROM goal WHERE status = ? ORDER BY date_end DESC", [NSNumber numberWithInt:state]];
     while([result next])
     {
         HTDGoal *goal = [[HTDGoal alloc] init];
@@ -172,6 +172,41 @@ For Date, may need to convert to human-readable format. Currently date is stored
     [db close];
 }
 
+
+- (void)highlightGoalIndicator:(HTDAction *)action {
+    
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
+    
+    [db open];
+    
+    FMResultSet *result = [db executeQuery:@"SELECT goal_ID FROM action WHERE name = ? ORDER BY date_start DESC LIMIT 1", [NSString stringWithString:action.action_name] ] ;
+    
+    int goal_ID = 0;
+    while ([result next]) {
+        goal_ID = [result intForColumn:@"goal_ID"];
+    }
+    
+    [db executeUpdate:@"UPDATE goal SET highlight_indicate = ? WHERE goal_ID = ?",[NSNumber numberWithInt:1], [NSNumber numberWithInt:goal_ID]];
+
+    [db close];
+
+}
+
+
+- (void)unhighlightAllGoalsIndicator {
+    
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
+    
+    [db open];
+//    NSLog(@"Unhighlight all indicators");
+
+    [db executeUpdate:@"UPDATE goal SET highlight_indicate = 0"];
+    
+    [db close];
+    
+}
+
+
 - (void)flipActionStatus:(HTDAction *)action {
     
     FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
@@ -195,7 +230,7 @@ For Date, may need to convert to human-readable format. Currently date is stored
     FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
     
     [db open];
-    [db executeUpdate:@"UPDATE goal SET status = 0 WHERE goal_ID = ?", [NSNumber numberWithInt:goalID]];
+    [db executeUpdate:@"UPDATE goal SET status = 0, date_end = ? WHERE goal_ID = ?", [NSDate date], [NSNumber numberWithInt:goalID]];
     
     [db close];
 }
@@ -234,7 +269,7 @@ For Date, may need to convert to human-readable format. Currently date is stored
     [db executeUpdate:@"UPDATE action SET date_end = ? WHERE action_ID = ?", [NSDate date],[NSNumber numberWithInt:action.action_id]];
 
     // mark goal dead
-    [db executeUpdate:@"UPDATE goal SET status = 2 WHERE goal_ID = ?", [NSNumber numberWithInt:action.goal_id]];
+    [db executeUpdate:@"UPDATE goal SET status = 2, date_end = ? WHERE goal_ID = ?", [NSDate date], [NSNumber numberWithInt:action.goal_id]];
     
     // add dead_count
     [db executeUpdate:@"UPDATE goal SET dead_count = dead_count + 1 WHERE goal_ID = ?", [NSNumber numberWithInt:action.goal_id]];

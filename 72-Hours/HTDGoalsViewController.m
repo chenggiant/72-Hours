@@ -97,6 +97,15 @@
 - (IBAction)nextActionButton:(UIButton *)sender {
     HTDAction *action = self.activeActions[sender.tag];
     
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
+    
+    HTDGoalCell *cell = (HTDGoalCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    UIImage *image = [UIImage imageNamed:@"Checked"];
+    
+    cell.actionCheck.highlightedImage = image;
+    cell.actionCheck.highlighted = YES;
+
     // flip action status
     [[[HTDDatabase alloc] init] flipActionStatus:action];
     
@@ -117,10 +126,11 @@
     double secondsInAnHour = 3600;
     int hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
     cell.timeLeft.text = [NSString stringWithFormat:@"%d", (72-hoursBetweenDates)];
+    cell.indicateNewAction.text = @"";
     
-    
-    if (action.highlight_indicate == 0) {
-        cell.backgroundColor = [UIColor grayColor];
+    if (action.highlight_indicate == 1) {
+//        cell.backgroundColor = [UIColor grayColor];
+        cell.indicateNewAction.text = @"New";
     }
     
     if (hoursBetweenDates <= 24) {
@@ -148,7 +158,9 @@
 //    cell.timeLeft.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y - cell.timeLeft.frame.size.height, cell.imageView.frame.size.width, cell.timeLeft.frame.size.height);
     cell.timeLeft.textAlignment = NSTextAlignmentCenter;
     
-    
+    cell.actionCheck.highlighted = NO;
+    cell.actionCheck.highlightedImage = nil;
+
     cell.nextActionButton.tag = indexPath.row;
     [cell.nextActionButton addTarget:self action:@selector(nextActionButton:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -208,9 +220,18 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[[HTDDatabase alloc] init] unhighlightAllGoalsIndicator];
+    
+}
+
 - (void)HTDNewGoalViewController:(HTDNewGoalViewController *)controller didAddGoal:(HTDAction *)action {
     // Insert action to database
+    
     [[[HTDDatabase alloc] init] insertNewAction:action];
+    [[[HTDDatabase alloc] init] highlightGoalIndicator:action];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -23,6 +23,6 @@
 @property int goal_id;
 @property int dead_count;
 @property int highlight_indicate;
-
+@property (strong, nonatomic) NSDate *date_end;
 
 @end

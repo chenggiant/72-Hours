@@ -31,6 +31,9 @@
 - (IBAction)save:(UIStoryboardSegue *)segue {
     [[[HTDDatabase alloc] init] markDeadGoalDeadActionAlive:self.action];
     
+    // mark the action as new by changing the highlight_indicate
+    [[[HTDDatabase alloc] init] highlightGoalIndicator:self.action];
+    
     [self showRedDotOnActiveTab];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

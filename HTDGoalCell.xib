@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -23,6 +23,9 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNV-2Q-m1U">
                         <rect key="frame" x="37" y="9" width="214" height="31"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
+                        </accessibility>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -35,6 +38,9 @@
                     </imageView>
                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unchecked" translatesAutoresizingMaskIntoConstraints="NO" id="nHC-hD-WJS">
                         <rect key="frame" x="9" y="15" width="20" height="20"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" none="YES" button="YES" notEnabled="YES"/>
+                        </accessibility>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s6c-R9-PkL">
                         <rect key="frame" x="271" y="25" width="30" height="21"/>
@@ -46,12 +52,18 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3A2-7w-VRr">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3A2-7w-VRr">
                         <rect key="frame" x="0.0" y="8" width="35" height="33"/>
                         <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEI-Ae-tg4">
+                        <rect key="frame" x="9" y="40" width="32" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                        <color key="textColor" red="0.51559646049999996" green="0.71185340750000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="highlightedColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="s6c-R9-PkL" firstAttribute="leading" secondItem="NNV-2Q-m1U" secondAttribute="trailing" constant="20" id="7KC-l5-4hJ"/>
@@ -83,11 +95,12 @@
                 <outlet property="actionCheck" destination="nHC-hD-WJS" id="lhT-lT-Xmt"/>
                 <outlet property="actionName" destination="NNV-2Q-m1U" id="g1X-gA-uDL"/>
                 <outlet property="goalName" destination="ZPT-k7-I25" id="KHB-3M-8CQ"/>
+                <outlet property="indicateNewAction" destination="hEI-Ae-tg4" id="CCG-Pa-68b"/>
                 <outlet property="nextActionButton" destination="3A2-7w-VRr" id="ZSL-fr-Iad"/>
                 <outlet property="ovalImageView" destination="c4L-yl-2cN" id="ENK-lf-dHZ"/>
                 <outlet property="timeLeft" destination="s6c-R9-PkL" id="Jp6-uR-OWF"/>
             </connections>
-            <point key="canvasLocation" x="-89" y="266"/>
+            <point key="canvasLocation" x="-531" y="156"/>
         </tableViewCell>
     </objects>
     <resources>
