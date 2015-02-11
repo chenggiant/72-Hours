@@ -31,12 +31,7 @@
 @implementation HTDGoalsViewController
 
 
-- (IBAction)save:(UIStoryboardSegue *)segue {
-    
-    [[[HTDDatabase alloc] init] updateNextActionName:self.action];
-    [self dismissViewControllerAnimated:YES completion:nil];
 
-}
 
 - (instancetype)init {
     self = [super initWithStyle:UITableViewStylePlain];
@@ -50,16 +45,56 @@
 }
 
 
-- (void)removeDefaultViewController {
-    if ([[self.childViewControllers lastObject] isKindOfClass:[HTDDefaultViewController class]]) {
-        UIViewController *defaultController = [self.childViewControllers lastObject];
-        
-        [defaultController willMoveToParentViewController:nil];
-        [defaultController.view removeFromSuperview];
-        [defaultController removeFromParentViewController];
+
+#pragma mark - UIViewController
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    // load the NIB file
+    UINib *nib = [UINib nibWithNibName:@"HTDGoalCell" bundle:nil];
+    
+    // register this NIB, which contains the cell
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"HTDGoalCell"];
+    
+    // reload tableview every 10 min to update the timeleft
+    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
+    
+    // change the tint color for tab bar
+    //    self.tabBarController.tabBar.tintColor = [UIColor orangeColor];
+    
+    // change the tint color for navigation bar
+    //    self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
+    //    self.navigationController.navigationBar.tintColor = [UIColor redColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.activeActions = [[[HTDDatabase alloc] init] selectActionsWithStatus:1];
+    
+    if ([self.activeActions count] > 0) {
         [self removeDefaultViewController];
     }
+    
+    // remove empty cells
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    
+    [self.tableView reloadData];
+    
+    [self hideRedDotOnActiveTab];
+    
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[[HTDDatabase alloc] init] unhighlightAllGoalsIndicator];
+    
+}
+
+#pragma mark - UITableView DataSource and Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -93,24 +128,6 @@
     return [self.activeActions count];
 }
 
-
-- (IBAction)nextActionButton:(UIButton *)sender {
-    HTDAction *action = self.activeActions[sender.tag];
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
-    
-    HTDGoalCell *cell = (HTDGoalCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-    
-    UIImage *image = [UIImage imageNamed:@"Checked"];
-    
-    cell.actionCheck.highlightedImage = image;
-    cell.actionCheck.highlighted = YES;
-
-    // flip action status
-    [[[HTDDatabase alloc] init] flipActionStatus:action];
-    
-    [self performSegueWithIdentifier:@"addNextAction" sender:action];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HTDGoalCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HTDGoalCell" forIndexPath:indexPath];
@@ -180,67 +197,7 @@
 }
 
 
-- (void)refreshTable {
-    // this may be too heavy to process
-//    self.activeActions = [[[HTDDatabase alloc] init] selectActionsWithStatus:1];
-
-    [self.tableView reloadData];
-}
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // load the NIB file
-    UINib *nib = [UINib nibWithNibName:@"HTDGoalCell" bundle:nil];
-    
-    // register this NIB, which contains the cell
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"HTDGoalCell"];
-    
-    // reload tableview every 10 min to update the timeleft
-    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
-
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    self.activeActions = [[[HTDDatabase alloc] init] selectActionsWithStatus:1];
-    
-    if ([self.activeActions count] > 0) {
-        [self removeDefaultViewController];
-    }
-    
-    // remove empty cells
-    self.tableView.tableFooterView = [[UIView alloc] init];
-    
-    [self.tableView reloadData];
-    
-    [self hideRedDotOnActiveTab];
-    
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    [[[HTDDatabase alloc] init] unhighlightAllGoalsIndicator];
-    
-}
-
-- (void)HTDNewGoalViewController:(HTDNewGoalViewController *)controller didAddGoal:(HTDAction *)action {
-    // Insert action to database
-    
-    [[[HTDDatabase alloc] init] insertNewAction:action];
-    [[[HTDDatabase alloc] init] highlightGoalIndicator:action];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-- (void)HTDNewGoalViewControllerDidCancel:(HTDNewGoalViewController *)controller {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
+#pragma mark - UIStoryboardSegue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -275,6 +232,57 @@
         nextActionViewController.goalID = action.goal_id;
     }
 }
+
+
+#pragma mark - HTDNewGoalViewController Delegate
+
+
+- (void)HTDNewGoalViewController:(HTDNewGoalViewController *)controller didAddGoal:(HTDAction *)action {
+    // Insert action to database
+    
+    [[[HTDDatabase alloc] init] insertNewAction:action];
+    [[[HTDDatabase alloc] init] highlightGoalIndicator:action];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)HTDNewGoalViewControllerDidCancel:(HTDNewGoalViewController *)controller {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+#pragma mark - IBAction
+
+
+- (IBAction)nextActionButton:(UIButton *)sender {
+    HTDAction *action = self.activeActions[sender.tag];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:sender.tag inSection:0];
+    
+    HTDGoalCell *cell = (HTDGoalCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    UIImage *image = [UIImage imageNamed:@"Checked"];
+    
+    cell.actionCheck.highlightedImage = image;
+    cell.actionCheck.highlighted = YES;
+    
+    // flip action status
+    [[[HTDDatabase alloc] init] flipActionStatus:action];
+    
+    [self performSegueWithIdentifier:@"addNextAction" sender:action];
+}
+
+- (IBAction)save:(UIStoryboardSegue *)segue {
+    
+    [[[HTDDatabase alloc] init] updateNextActionName:self.action];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+
+#pragma mark - Helper
 
 
 - (void)showRedDotOnDeadTab {
@@ -324,6 +332,25 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 
+}
+
+- (void)removeDefaultViewController {
+    if ([[self.childViewControllers lastObject] isKindOfClass:[HTDDefaultViewController class]]) {
+        UIViewController *defaultController = [self.childViewControllers lastObject];
+        
+        [defaultController willMoveToParentViewController:nil];
+        [defaultController.view removeFromSuperview];
+        [defaultController removeFromParentViewController];
+        [self removeDefaultViewController];
+    }
+}
+
+
+- (void)refreshTable {
+    // this may be too heavy to process
+    //    self.activeActions = [[[HTDDatabase alloc] init] selectActionsWithStatus:1];
+    
+    [self.tableView reloadData];
 }
 
 @end

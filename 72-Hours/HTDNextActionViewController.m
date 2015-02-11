@@ -24,16 +24,16 @@
 
 @implementation HTDNextActionViewController
 
+
+
+#pragma mark - IBAction
+
 - (IBAction)cancel:(id)sender {
     [[[HTDDatabase alloc] init] flipActionStatus:self.actionsOfGoal[0]];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-///////////////////////////////////////////////////////////////////
-// Need to fix here
-///////////////////////////////////////////////////////////////////
 
 - (IBAction)save:(id)sender {
     if (self.goalState) {
@@ -47,12 +47,16 @@
         action.action_name = self.inputField.text;
         action.goal_id = self.goalID;
         [[[HTDDatabase alloc] init] insertNewNextAction:action];
-        
+        [[[HTDDatabase alloc] init] highlightGoalIndicator:action];
+
         [self dismissViewControllerAnimated:YES completion:nil];
 
     }
 }
 
+
+
+#pragma mark - UITableView DataSource and Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
@@ -74,7 +78,6 @@
 }
 
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.0f;
@@ -91,16 +94,7 @@
 }
 
 
-- (void)switchChanged:(id)sender {
-    UISwitch* switchControl = sender;
-    if (switchControl.on) {
-        self.goalState = YES;
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-    } else {
-        self.goalState = NO;
-    }
-//    NSLog( @"The switch is %@", switchControl.on ? @"ON" : @"OFF" );
-}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
@@ -197,6 +191,11 @@
 }
 
 
+
+
+#pragma mark - UIViewController
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -216,7 +215,7 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"HTDActionCell"];
     
     self.actionsOfGoal = [[[HTDDatabase alloc] init] selectActionsWithGoalID:self.goalID];
-
+    
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -229,9 +228,35 @@
                                              selector:@selector(textFieldDidChange:)
                                                  name:@"UITextFieldTextDidChangeNotification"
                                                object:nil];
-
+    
 }
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+}
+
+
+
+#pragma mark - Helper
+
+
+- (void)switchChanged:(id)sender {
+    UISwitch* switchControl = sender;
+    if (switchControl.on) {
+        self.goalState = YES;
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    } else {
+        self.goalState = NO;
+    }
+    //    NSLog( @"The switch is %@", switchControl.on ? @"ON" : @"OFF" );
+}
+
+
+
+#pragma mark - TextField
 
 // the method to call on a change
 - (void)textFieldDidChange:(NSNotification*)aNotification
@@ -253,15 +278,6 @@
 - (void)dismissKeyboard {
     [self.inputField resignFirstResponder];
 }
-
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self.tableView reloadData];
-}
-
-
 
 
 @end

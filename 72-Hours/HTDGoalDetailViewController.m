@@ -21,6 +21,8 @@
 @implementation HTDGoalDetailViewController
 
 
+#pragma mark - UITableView DataSource and Delegate
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -153,6 +155,8 @@
 }
 
 
+#pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -185,6 +189,10 @@
 }
 
 
+
+#pragma mark - TextField
+
+
 // the method to call on a change
 - (void)textFieldDidChange:(NSNotification*)aNotification
 {
@@ -206,6 +214,10 @@
     [self.txtField resignFirstResponder];
 }
 
+
+#pragma mark - UIViewController
+
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
         
@@ -221,6 +233,10 @@
     [self.view endEditing:YES];
 }
 
+
+#pragma mark - IBAction
+
+
 - (IBAction)save:(id)sender {
     // Update database with new next action
     HTDAction *newAction  = [[HTDAction alloc] init];
@@ -231,6 +247,10 @@
     //    [self dismissViewControllerAnimated:YES completion:self.dismissBlock];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
+
+
+#pragma mark - UIStoryboardSegue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"unwindToGoalsView"]) {

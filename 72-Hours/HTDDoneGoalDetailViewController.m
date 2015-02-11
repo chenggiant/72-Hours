@@ -19,6 +19,7 @@
 
 @implementation HTDDoneGoalDetailViewController
 
+#pragma mark - UITableView DataSource and Delegate
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -49,8 +50,6 @@
     
     return cell;
 }
-
-
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -106,6 +105,9 @@
 }
 
 
+#pragma mark - UIViewController
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -116,7 +118,6 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"HTDActionCell"];
     
 }
-
 
 
 - (void)viewWillAppear:(BOOL)animated {

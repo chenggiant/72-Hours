@@ -33,7 +33,6 @@
     NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
     [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
     
-    
 
     // Override point for customization after application launch.
     return YES;

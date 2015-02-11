@@ -17,18 +17,8 @@
 @implementation HTDNewGoalViewController
 
 
-- (IBAction)cancel:(id)sender {
-    [self.delegate HTDNewGoalViewControllerDidCancel:self];
-}
+#pragma mark - UITableView DataSource and Delegate
 
-- (IBAction)save:(id)sender {
-    HTDAction *action = [[HTDAction alloc] init];
-    action.action_name = self.actionTextField.text;
-    action.goal_name = self.goalTextField.text;
-    action.status = 1;
-    action.date_start = [NSDate date];
-    [self.delegate HTDNewGoalViewController:self didAddGoal:action];
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
@@ -76,6 +66,10 @@
     }
 }
 
+
+#pragma mark - UIViewController
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -89,6 +83,27 @@
                                                object:nil];
 }
 
+
+#pragma mark - IBAction
+
+
+- (IBAction)cancel:(id)sender {
+    [self.delegate HTDNewGoalViewControllerDidCancel:self];
+}
+
+- (IBAction)save:(id)sender {
+    HTDAction *action = [[HTDAction alloc] init];
+    action.action_name = self.actionTextField.text;
+    action.goal_name = self.goalTextField.text;
+    action.status = 1;
+    action.date_start = [NSDate date];
+    [self.delegate HTDNewGoalViewController:self didAddGoal:action];
+}
+
+
+#pragma mark - TextField
+
+
 // the method to call on a change
 - (void)textFieldDidChange:(NSNotification*)aNotification
 {
@@ -99,7 +114,7 @@
     return ![self isStringEmptyWithString:self.goalTextField.text] && ![self isStringEmptyWithString:self.actionTextField.text];
 }
                
-               // a category would be more elegant
+// a category would be more elegant
 - (BOOL)isStringEmptyWithString:(NSString *)aString {
     NSString * temp = [aString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         return [temp isEqual:@""];

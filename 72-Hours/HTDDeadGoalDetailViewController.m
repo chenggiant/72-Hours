@@ -26,6 +26,10 @@
 
 
 
+
+#pragma mark - UITableView DataSource and Delegate
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
@@ -46,7 +50,6 @@
 }
 
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 0.0f;
@@ -63,16 +66,8 @@
 }
 
 
-- (void)switchChanged:(id)sender {
-    UISwitch* switchControl = sender;
-    if (switchControl.on) {
-        self.goalState = YES;
-        self.navigationItem.rightBarButtonItem.enabled = YES;
-    } else {
-        self.goalState = NO;
-    }
-    //    NSLog( @"The switch is %@", switchControl.on ? @"ON" : @"OFF" );
-}
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
@@ -169,6 +164,9 @@
 }
 
 
+#pragma mark - UIViewController
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -184,12 +182,31 @@
 }
 
 
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [self.tableView reloadData];
 }
+
+
+
+#pragma mark - Helper
+
+
+- (void)switchChanged:(id)sender {
+    UISwitch* switchControl = sender;
+    if (switchControl.on) {
+        self.goalState = YES;
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    } else {
+        self.goalState = NO;
+    }
+    //    NSLog( @"The switch is %@", switchControl.on ? @"ON" : @"OFF" );
+}
+
+
+#pragma mark - UIStoryboardSegue
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"unwindToDeadGoalsView"]) {

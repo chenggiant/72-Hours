@@ -28,6 +28,10 @@
 
 @implementation HTDDoneGoalsViewController
 
+
+
+#pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -57,7 +61,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableView DataSource and Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -178,6 +182,9 @@
 }
 
 
+#pragma mark - UIStoryboardSegue
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showDoneGoalDetail"]) {
@@ -188,6 +195,9 @@
     }
 }
 
+
+
+#pragma mark - Helper
 
 - (void)removeDefaultViewController {
     if ([[self.childViewControllers lastObject] isKindOfClass:[HTDDefaultViewController class]]) {

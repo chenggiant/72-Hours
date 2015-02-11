@@ -28,6 +28,9 @@
 @implementation HTDDeadGoalsViewController
 
 
+
+#pragma mark - IBAction
+
 - (IBAction)save:(UIStoryboardSegue *)segue {
     [[[HTDDatabase alloc] init] markDeadGoalDeadActionAlive:self.action];
     
@@ -37,6 +40,10 @@
     [self showRedDotOnActiveTab];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
+
+#pragma mark - UIViewController
 
 
 - (void)viewDidLoad {
@@ -72,7 +79,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableView DataSource and Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -181,6 +188,10 @@
     return headerView;
 }
 
+
+#pragma mark - UIStoryboardSegue
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showDeadGoalDetail"]) {
@@ -200,6 +211,7 @@
 }
 
 
+#pragma mark - Helper
 
 - (void)removeDefaultViewController {
     if ([[self.childViewControllers lastObject] isKindOfClass:[HTDDefaultViewController class]]) {
