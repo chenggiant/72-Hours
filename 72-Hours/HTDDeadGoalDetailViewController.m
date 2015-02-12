@@ -97,7 +97,7 @@
             
             cellAction.actionNameLabel.text = action.action_name;
             
-            NSTimeInterval distanceBetweenDates = [action.date_end timeIntervalSinceDate:action.    date_start];
+            NSTimeInterval distanceBetweenDates = [action.date_end timeIntervalSinceDate:action.date_start];
             double secondsInAnHour = 3600;
             int hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
             cellAction.timeSpentLabel.text = [NSString stringWithFormat:@"%d", hoursBetweenDates];

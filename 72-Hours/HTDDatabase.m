@@ -132,6 +132,24 @@
 }
 
 
+
+- (NSString *)selectActionNameWithActionID:(int)actionID {
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
+    
+    NSString *actionName = @"";
+    [db open];
+    
+    FMResultSet *result = [db executeQuery:@"SELECT name FROM action WHERE action_ID = ?", [NSNumber numberWithInt:actionID]];
+    while([result next])
+    {
+        actionName = [result stringForColumn:@"name"];
+    }
+    [db close];
+    
+    return actionName;
+}
+
+
 /*
  
 For Date, may need to convert to human-readable format. Currently date is stored in Unix time seconds.

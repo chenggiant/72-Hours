@@ -243,6 +243,9 @@
     [[[HTDDatabase alloc] init] insertNewAction:action];
     [[[HTDDatabase alloc] init] highlightGoalIndicator:action];
     
+    // add local notification
+    [self addLocalNotificationForAction:action];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -268,17 +271,64 @@
     cell.actionCheck.highlightedImage = image;
     cell.actionCheck.highlighted = YES;
     
-    // flip action status
+    // flip action status to mark action done
     [[[HTDDatabase alloc] init] flipActionStatus:action];
+    
+    // remove old notification
+    NSString *oldNotification = [NSString stringWithFormat:@"Action [%@] has 24 hours left", action.action_name];
+    [self removeLocalNotification:oldNotification];
     
     [self performSegueWithIdentifier:@"addNextAction" sender:action];
 }
 
 - (IBAction)save:(UIStoryboardSegue *)segue {
     
+    
+    NSString *oldActionName = [[[HTDDatabase alloc] init] selectActionNameWithActionID:self.action.action_id];
+    NSString *oldNotification = [NSString stringWithFormat:@"Action [%@] has 24 hours left", oldActionName];
+    
+    // remove old notification
+    [self removeLocalNotification:oldNotification];
+    
+    // update the action name
     [[[HTDDatabase alloc] init] updateNextActionName:self.action];
+    
+    // add new notification with new action name
+    [self addLocalNotificationForAction:self.action];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+
+#pragma mark - Local Notification
+
+- (void)addLocalNotificationForAction:(HTDAction *)action {
+    UILocalNotification *notification = [[UILocalNotification alloc] init] ;
+    
+    NSTimeInterval distanceBetweenDates = [[NSDate date] timeIntervalSinceDate:action.date_start];
+
+    notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:48*3600-distanceBetweenDates];
+    notification.timeZone = [NSTimeZone defaultTimeZone] ;
+    notification.alertBody = [NSString stringWithFormat:@"Action [%@] has 24 hours left", action.action_name];
+    notification.soundName=UILocalNotificationDefaultSoundName;
+//    notification.applicationIconBadgeNumber = 1;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification] ;
+}
+
+- (void)removeLocalNotification:(NSString *)notification {
+    NSArray *arrayOfLocalNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications] ;
+    
+    for (UILocalNotification *localNotification in arrayOfLocalNotifications) {
+        if ([localNotification.alertBody isEqualToString:notification]) {
+//            NSLog(@"the notification this is canceld is %@", localNotification.alertBody);
+            
+            // delete the notification from the system
+            [[UIApplication sharedApplication] cancelLocalNotification:localNotification] ;
+            
+        }
+    }
 }
 
 

@@ -24,6 +24,7 @@
 - (NSArray *)selectActionsWithGoalID:(int)goalID;
 - (int)selectGoalDeadCount:(int)goalID;
 - (NSArray *)selectGoalsWithStatus:(int)state;
+- (NSString *)selectActionNameWithActionID:(int)actionID;
 
 
 // Updating Queries

@@ -34,6 +34,8 @@
 - (IBAction)save:(UIStoryboardSegue *)segue {
     [[[HTDDatabase alloc] init] markDeadGoalDeadActionAlive:self.action];
     
+    [self addLocalNotificationForAction:self.action];
+    
     // mark the action as new by changing the highlight_indicate
     [[[HTDDatabase alloc] init] highlightGoalIndicator:self.action];
     
@@ -252,4 +254,34 @@
     [tabBarController.tabBar addSubview:dotImage];
 }
 
+
+#pragma mark - Local Notification
+
+- (void)addLocalNotificationForAction:(HTDAction *)action {
+    UILocalNotification *notification = [[UILocalNotification alloc] init] ;
+    
+    NSTimeInterval distanceBetweenDates = [[NSDate date] timeIntervalSinceDate:action.date_start];
+    
+    notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:48*3600-distanceBetweenDates];
+    notification.timeZone = [NSTimeZone defaultTimeZone] ;
+    notification.alertBody = [NSString stringWithFormat:@"Action [%@] has 24 hours left", action.action_name];
+    notification.soundName=UILocalNotificationDefaultSoundName;
+    //    notification.applicationIconBadgeNumber = 1;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification] ;
+}
+
+- (void)removeLocalNotification:(NSString *)notification {
+    NSArray *arrayOfLocalNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications] ;
+    
+    for (UILocalNotification *localNotification in arrayOfLocalNotifications) {
+        if ([localNotification.alertBody isEqualToString:notification]) {
+            //            NSLog(@"the notification this is canceld is %@", localNotification.alertBody);
+            
+            // delete the notification from the system
+            [[UIApplication sharedApplication] cancelLocalNotification:localNotification] ;
+            
+        }
+    }
+}
 @end

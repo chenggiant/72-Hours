@@ -243,7 +243,6 @@
     newAction = self.actionsOfGoal[0];
     newAction.action_name = self.txtField.text;
     
-    
     //    [self dismissViewControllerAnimated:YES completion:self.dismissBlock];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }

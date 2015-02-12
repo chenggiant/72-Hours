@@ -33,6 +33,11 @@
     NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
     [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
     
+    
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound
+                                                                                                              categories:nil]];
+    }
 
     // Override point for customization after application launch.
     return YES;
