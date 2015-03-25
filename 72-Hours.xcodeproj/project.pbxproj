@@ -17,7 +17,6 @@
 		4208F63E1A2DE3DA004F39B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F63D1A2DE3DA004F39B4 /* AppDelegate.m */; };
 		4208F6411A2DE3DA004F39B4 /* HTDGoalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F6401A2DE3DA004F39B4 /* HTDGoalsViewController.m */; };
 		4208F6461A2DE3DA004F39B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4208F6451A2DE3DA004F39B4 /* Images.xcassets */; };
-		4208F6491A2DE3DA004F39B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4208F6471A2DE3DA004F39B4 /* LaunchScreen.xib */; };
 		4208F6551A2DE3DA004F39B4 /* _2_HoursTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F6541A2DE3DA004F39B4 /* _2_HoursTests.m */; };
 		4208F66A1A2DE3F3004F39B4 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F6601A2DE3F3004F39B4 /* FMDatabase.m */; };
 		4208F66B1A2DE3F3004F39B4 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F6621A2DE3F3004F39B4 /* FMDatabaseAdditions.m */; };
@@ -71,7 +70,6 @@
 		4208F63F1A2DE3DA004F39B4 /* HTDGoalsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTDGoalsViewController.h; sourceTree = "<group>"; };
 		4208F6401A2DE3DA004F39B4 /* HTDGoalsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTDGoalsViewController.m; sourceTree = "<group>"; };
 		4208F6451A2DE3DA004F39B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4208F6481A2DE3DA004F39B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4208F64E1A2DE3DA004F39B4 /* 72-HoursTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "72-HoursTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4208F6531A2DE3DA004F39B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4208F6541A2DE3DA004F39B4 /* _2_HoursTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _2_HoursTests.m; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 				4208F68D1A2DF64C004F39B4 /* HTDGoalCell.xib */,
 				42BF561A1A3727630007859A /* HTDActionCell.xib */,
 				42BF56131A3719620007859A /* Main.storyboard */,
-				4208F6471A2DE3DA004F39B4 /* LaunchScreen.xib */,
 				4208F68B1A2DF64C004F39B4 /* HTDGoalCell.h */,
 				4208F68C1A2DF64C004F39B4 /* HTDGoalCell.m */,
 				42BF56181A3727630007859A /* HTDActionCell.h */,
@@ -353,7 +350,6 @@
 				42BF561C1A3727630007859A /* HTDActionCell.xib in Resources */,
 				42CAD7241A3ACD0800D400A3 /* 72Hours.sqlite in Resources */,
 				42BF56141A3719620007859A /* Main.storyboard in Resources */,
-				4208F6491A2DE3DA004F39B4 /* LaunchScreen.xib in Resources */,
 				4208F6461A2DE3DA004F39B4 /* Images.xcassets in Resources */,
 				4208F68F1A2DF64C004F39B4 /* HTDGoalCell.xib in Resources */,
 				1287EB7D1A734AF8002815E8 /* HTDDefaultView.xib in Resources */,
@@ -417,17 +413,6 @@
 			targetProxy = 4208F64F1A2DE3DA004F39B4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		4208F6471A2DE3DA004F39B4 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4208F6481A2DE3DA004F39B4 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4208F6561A2DE3DA004F39B4 /* Debug */ = {
@@ -510,12 +495,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "72-Hours/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "72-Hours";
 			};
 			name = Debug;
 		};
@@ -523,12 +509,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "72-Hours/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "72-Hours";
 			};
 			name = Release;
 		};
@@ -546,7 +533,7 @@
 				);
 				INFOPLIST_FILE = "72-HoursTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "72-HoursTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/72-Hours.app/72-Hours";
 			};
 			name = Debug;
@@ -561,7 +548,7 @@
 				);
 				INFOPLIST_FILE = "72-HoursTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "72-HoursTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/72-Hours.app/72-Hours";
 			};
 			name = Release;
