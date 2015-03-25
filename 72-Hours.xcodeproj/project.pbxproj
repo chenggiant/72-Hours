@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1268E12D1AC2AC6900321D81 /* HTDGoalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1268E12B1AC2AC6900321D81 /* HTDGoalCell.m */; };
+		1268E12E1AC2AC6900321D81 /* HTDGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1268E12C1AC2AC6900321D81 /* HTDGoalCell.xib */; };
 		1287EB7C1A734AF8002815E8 /* HTDDefaultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1287EB7A1A734AF8002815E8 /* HTDDefaultViewController.m */; };
 		1287EB7D1A734AF8002815E8 /* HTDDefaultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1287EB7B1A734AF8002815E8 /* HTDDefaultView.xib */; };
 		12A4B5CA1A41A45F002BF9B7 /* HTDDeadGoalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A4B5C91A41A45F002BF9B7 /* HTDDeadGoalsViewController.m */; };
@@ -24,8 +26,6 @@
 		4208F66D1A2DE3F3004F39B4 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F6661A2DE3F3004F39B4 /* FMDatabaseQueue.m */; };
 		4208F66E1A2DE3F3004F39B4 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F6691A2DE3F3004F39B4 /* FMResultSet.m */; };
 		4208F6711A2DE49D004F39B4 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4208F66F1A2DE42C004F39B4 /* libsqlite3.dylib */; };
-		4208F68E1A2DF64C004F39B4 /* HTDGoalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4208F68C1A2DF64C004F39B4 /* HTDGoalCell.m */; };
-		4208F68F1A2DF64C004F39B4 /* HTDGoalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4208F68D1A2DF64C004F39B4 /* HTDGoalCell.xib */; };
 		426F83D41A3959F60047F1B4 /* RowForInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426F83D31A3959F60047F1B4 /* RowForInputCell.m */; };
 		426F83D71A395A090047F1B4 /* RowForToggleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 426F83D61A395A090047F1B4 /* RowForToggleCell.m */; };
 		426F83DA1A3972B90047F1B4 /* HTDDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 426F83D91A3972B90047F1B4 /* HTDDatabase.m */; };
@@ -51,6 +51,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1268E12A1AC2AC6900321D81 /* HTDGoalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTDGoalCell.h; sourceTree = "<group>"; };
+		1268E12B1AC2AC6900321D81 /* HTDGoalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTDGoalCell.m; sourceTree = "<group>"; };
+		1268E12C1AC2AC6900321D81 /* HTDGoalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTDGoalCell.xib; sourceTree = "<group>"; };
 		1287EB791A734AF8002815E8 /* HTDDefaultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTDDefaultViewController.h; sourceTree = "<group>"; };
 		1287EB7A1A734AF8002815E8 /* HTDDefaultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTDDefaultViewController.m; sourceTree = "<group>"; };
 		1287EB7B1A734AF8002815E8 /* HTDDefaultView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTDDefaultView.xib; sourceTree = "<group>"; };
@@ -85,9 +88,6 @@
 		4208F6681A2DE3F3004F39B4 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		4208F6691A2DE3F3004F39B4 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		4208F66F1A2DE42C004F39B4 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		4208F68B1A2DF64C004F39B4 /* HTDGoalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTDGoalCell.h; path = ../HTDGoalCell.h; sourceTree = "<group>"; };
-		4208F68C1A2DF64C004F39B4 /* HTDGoalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTDGoalCell.m; path = ../HTDGoalCell.m; sourceTree = "<group>"; };
-		4208F68D1A2DF64C004F39B4 /* HTDGoalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HTDGoalCell.xib; path = ../HTDGoalCell.xib; sourceTree = "<group>"; };
 		426F83D21A3959F60047F1B4 /* RowForInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RowForInputCell.h; sourceTree = "<group>"; };
 		426F83D31A3959F60047F1B4 /* RowForInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RowForInputCell.m; sourceTree = "<group>"; };
 		426F83D51A395A090047F1B4 /* RowForToggleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RowForToggleCell.h; sourceTree = "<group>"; };
@@ -146,12 +146,12 @@
 		123190471A4B211E0003D924 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1268E12A1AC2AC6900321D81 /* HTDGoalCell.h */,
+				1268E12B1AC2AC6900321D81 /* HTDGoalCell.m */,
+				1268E12C1AC2AC6900321D81 /* HTDGoalCell.xib */,
 				1287EB7B1A734AF8002815E8 /* HTDDefaultView.xib */,
-				4208F68D1A2DF64C004F39B4 /* HTDGoalCell.xib */,
 				42BF561A1A3727630007859A /* HTDActionCell.xib */,
 				42BF56131A3719620007859A /* Main.storyboard */,
-				4208F68B1A2DF64C004F39B4 /* HTDGoalCell.h */,
-				4208F68C1A2DF64C004F39B4 /* HTDGoalCell.m */,
 				42BF56181A3727630007859A /* HTDActionCell.h */,
 				42BF56191A3727630007859A /* HTDActionCell.m */,
 				426F83D21A3959F60047F1B4 /* RowForInputCell.h */,
@@ -351,7 +351,7 @@
 				42CAD7241A3ACD0800D400A3 /* 72Hours.sqlite in Resources */,
 				42BF56141A3719620007859A /* Main.storyboard in Resources */,
 				4208F6461A2DE3DA004F39B4 /* Images.xcassets in Resources */,
-				4208F68F1A2DF64C004F39B4 /* HTDGoalCell.xib in Resources */,
+				1268E12E1AC2AC6900321D81 /* HTDGoalCell.xib in Resources */,
 				1287EB7D1A734AF8002815E8 /* HTDDefaultView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,8 +371,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				12A4B5CA1A41A45F002BF9B7 /* HTDDeadGoalsViewController.m in Sources */,
-				4208F68E1A2DF64C004F39B4 /* HTDGoalCell.m in Sources */,
 				429B5C591A3841910028D2A2 /* HTDGoalDetailViewController.m in Sources */,
+				1268E12D1AC2AC6900321D81 /* HTDGoalCell.m in Sources */,
 				4208F6411A2DE3DA004F39B4 /* HTDGoalsViewController.m in Sources */,
 				12A4B5CD1A41A481002BF9B7 /* HTDDoneGoalsViewController.m in Sources */,
 				4208F66C1A2DE3F3004F39B4 /* FMDatabasePool.m in Sources */,
