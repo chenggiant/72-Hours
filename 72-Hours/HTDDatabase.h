@@ -38,4 +38,9 @@
 - (void)highlightGoalIndicator:(HTDAction *)action;
 - (void)unhighlightAllGoalsIndicator;
 
+
+// Delete Queries
+- (void)deleteGoalWithActions:(int)goalID;
+
+
 @end

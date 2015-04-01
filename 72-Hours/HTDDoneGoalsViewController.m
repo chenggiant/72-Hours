@@ -182,6 +182,30 @@
 }
 
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        // delete task with all of its actions
+        HTDGoal *goal = [[HTDGoal alloc] init];
+        goal = self.doneGoals[indexPath.row];
+        
+        [[[HTDDatabase alloc] init] deleteGoalWithActions:goal.goal_id];
+        
+        NSMutableArray *mutArray = [NSMutableArray arrayWithArray:self.doneGoals];
+        [mutArray removeObjectAtIndex:indexPath.row];
+        self.doneGoals = [NSArray arrayWithArray:mutArray];
+        
+        if ([self.doneGoals count] != 0) {
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        } else {
+            [self refreshTable];
+        }
+    } else {
+        NSLog(@"Unhandled editing style!");
+    }
+}
+
+
 #pragma mark - UIStoryboardSegue
 
 
@@ -216,6 +240,13 @@
         [viewToRemove removeFromSuperview];
         [self hideRedDotOnDoneTab];
     }
+}
+
+- (void)refreshTable {
+    // this may be too heavy to process
+    //    self.activeActions = [[[HTDDatabase alloc] init] selectActionsWithStatus:1];
+    
+    [self.tableView reloadData];
 }
 
 

@@ -313,6 +313,17 @@ For Date, may need to convert to human-readable format. Currently date is stored
 }
 
 
+- (void)deleteGoalWithActions:(int)goalID {
+    FMDatabase *db = [FMDatabase databaseWithPath:self.databasePath];
+    
+    [db open];
+    
+    [db executeUpdate:@"DELETE FROM goal WHERE goal_ID = ?", [NSNumber numberWithInt:goalID]];
+    [db executeUpdate:@"DELETE FROM action WHERE goal_ID = ?", [NSNumber numberWithInt:goalID]];
+
+    [db close];
+}
+
 
 
 @end
