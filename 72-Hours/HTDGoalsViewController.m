@@ -21,6 +21,9 @@
 #define SYSTEM_VERSION_LESS_THAN(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
+
+#define CUSTOM_COLOR [UIColor colorWithRed:0.408 green:0.647 blue:0.737 alpha:1.0]
+
 @interface HTDGoalsViewController ()
 
 @property (strong, nonatomic) NSArray *activeActions;
@@ -31,11 +34,8 @@
 @implementation HTDGoalsViewController
 
 
-
-
 - (instancetype)init {
     self = [super initWithStyle:UITableViewStylePlain];
-    
     return self;
 }
 
@@ -43,7 +43,6 @@
 - (instancetype)initWithStyle:(UITableViewStyle)style {
     return [self init];
 }
-
 
 
 #pragma mark - UIViewController
@@ -62,11 +61,13 @@
     [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(refreshTable) userInfo:nil repeats:YES];
     
     // change the tint color for tab bar
-    //    self.tabBarController.tabBar.tintColor = [UIColor orangeColor];
     
-    // change the tint color for navigation bar
-    //    self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
-    //    self.navigationController.navigationBar.tintColor = [UIColor redColor];
+    
+        self.tabBarController.tabBar.tintColor = CUSTOM_COLOR;
+    
+//     change the tint color for navigation bar
+    self.navigationController.navigationBar.barTintColor = CUSTOM_COLOR;
+    self.navigationController.navigationBar.tintColor = CUSTOM_COLOR;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

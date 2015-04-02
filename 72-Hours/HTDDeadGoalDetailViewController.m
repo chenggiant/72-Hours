@@ -106,7 +106,7 @@
             }
             
             
-            //            cellAction.timeSpentLabel.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y - cellAction.timeSpentLabel.frame.size.height, cell.imageView.frame.size.width, cellAction.timeSpentLabel.frame.size.height);
+            //    cellAction.timeSpentLabel.frame = CGRectMake(cell.imageView.frame.origin.x, cell.imageView.frame.origin.y - cellAction.timeSpentLabel.frame.size.height, cell.imageView.frame.size.width, cellAction.timeSpentLabel.frame.size.height);
             cellAction.timeSpentLabel.textAlignment = NSTextAlignmentCenter;
             
             cell = cellAction;
