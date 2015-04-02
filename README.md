@@ -29,9 +29,9 @@ To record all the goals that you forget to take actions. You can bring a goal to
 
 ## Screenshots
 
-<img src="http://i.imgur.com/XkXk8cq.png" alt="Active" width="250px" hspace="10"/>
-<img src="http://i.imgur.com/SsfKTrD.png" alt="Done" width="250px" hspace="10"/>
-<img src="http://i.imgur.com/FusPbkf.png" alt="Dead" width="250px" hspace="10"/>
+<img src="http://i.imgur.com/XkXk8cq.png" alt="Active" width="300px" hspace="10"/>
+<img src="http://i.imgur.com/SsfKTrD.png" alt="Done" width="300px" hspace="10"/>
+<img src="http://i.imgur.com/FusPbkf.png" alt="Dead" width="300px" hspace="10"/>
 
 ## License
 
